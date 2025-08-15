@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Hero } from './sections/Hero';
 import { VenueGrid } from './sections/VenueGrid';
 import { SEO } from './components/SEO';
+import VenueFinder from './components/VenueFinder';
 
 const App: React.FC = () => {
   return (
@@ -9,6 +10,7 @@ const App: React.FC = () => {
       <SEO />
       <Navbar />
       <main>
+        <VenueFinder />
         <Hero />
         <VenueGrid />
         <Footer />

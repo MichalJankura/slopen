@@ -7,11 +7,16 @@ export interface DayHours {
 
 export type WeeklyHours = Partial<Record<DayKey, DayHours | null>>; // null => closed that day
 
+export type ReviewRating = '1*' | '2*' | '3*' | '4*' | '5*';
+
+export type RestaurantType = 'tradičná' | 'ázijská' | 'normal';
+
 export interface Venue {
   id: string;
   name: string;
   type: 'restaurant' | 'pub' | 'club' | 'cafe';
   address: string;
+  reviews?: ReviewRating;
   weeklyHours: WeeklyHours; // precise weekly schedule
   weeklyKitchenHours?: WeeklyHours; // optional kitchen (food service) schedule
   website?: string;
@@ -20,6 +25,8 @@ export interface Venue {
   tiktok?: string;
   image: string; // path or URL
   // (Deprecated) hours?: string; // legacy single range support
+
+  restaurantType?: RestaurantType; // e.g. 'pizzeria', 'steakhouse', etc.
 }
 
 export interface VenueWithStatus extends Venue {

@@ -7,7 +7,9 @@ export const venues: Venue[] = [
     id: 'pizza-palma',
     name: 'Pizza Palma',
     type: 'restaurant',
+    restaurantType: 'normal',
     address: 'Reštaurácia PALMA, Za Vodou 1387/3, Stará Ľubovňa, 064 01',
+    reviews: '4*', // Example review rating
     weeklyHours: {
       mon: { open: '10:00', close: '22:00' },
       tue: { open: '10:00', close: '22:00' },
