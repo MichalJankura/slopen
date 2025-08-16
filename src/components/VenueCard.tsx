@@ -1,5 +1,5 @@
 import React from 'react';
-import { Venue } from '../types';
+import { Venue, VenueCategory } from '../types';
 import { FaHeart, FaRegHeart, FaInstagram, FaFacebook, FaGlobe, FaTiktok } from 'react-icons/fa6';
 
 interface Props {
@@ -10,11 +10,14 @@ interface Props {
   statusNote?: string;
 }
 
-const typeLabel: Record<Venue['type'], string> = {
+// Mapping from internal category codes to display labels
+const typeLabel: Record<VenueCategory, string> = {
   restaurant: 'Reštaurácia',
   pub: 'Pub',
-  club: 'Club',
-  cafe: 'Kaviareň'
+  bar: 'Bar',
+  cafe: 'Kaviareň',
+  bakery: 'Pekáreň',
+  club: 'Klub'
 };
 
 export const VenueCard: React.FC<Props> = ({ venue, favourite, onToggleFavourite, isOpen, statusNote }) => {
@@ -32,10 +35,27 @@ export const VenueCard: React.FC<Props> = ({ venue, favourite, onToggleFavourite
       </div>
       <div className="p-4 flex flex-col gap-2">
         <div className="flex items-start justify-between gap-2">
-          <h3 className="font-semibold text-lg leading-tight line-clamp-2">{venue.name}</h3>
-          <span className="text-[10px] uppercase tracking-wide bg-primary px-2 py-1 rounded font-bold">{typeLabel[venue.type]}</span>
+          <h3 className="font-semibold text-lg leading-tight line-clamp-2 flex-1">{venue.name}</h3>
+          {/* Type badges (supports multiple types) */}
+          <div className="flex flex-wrap gap-1 justify-end">
+            {venue.types.map(t => (
+              <span key={t} className="text-[10px] uppercase tracking-wide bg-primary px-2 py-1 rounded font-bold">
+                {typeLabel[t] || t}
+              </span>
+            ))}
+          </div>
         </div>
-        <p className="text-xs text-neutral-400 line-clamp-1">{venue.address}</p>
+        <p className="text-xs text-neutral-400 line-clamp-1">
+          <a
+            href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(venue.name)}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={`Zobraziť mapu: ${venue.name}`}
+            className="hover:underline hover:text-neutral-200 focus:outline-none focus:ring-2 focus:ring-primary rounded"
+          >
+            {venue.address}
+          </a>
+        </p>
   {/* Hours row */}
         <p className="text-xs"><span className={isOpen ? 'text-green-400' : 'text-red-400'}>{isOpen ? 'OTVORENÉ' : 'ZATVORENÉ'}</span> <span className="text-neutral-500 ml-1">{'todayHoursLabel' in venue ? (venue as any).todayHoursLabel : ''}</span>{statusNote && <span className="ml-2 text-[10px] text-neutral-400">{statusNote}</span>}</p>
         {'kitchenTodayLabel' in venue && (venue as any).kitchenTodayLabel && (

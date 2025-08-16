@@ -119,11 +119,12 @@ const VenueFinder: React.FC = () => {
         let results = venues;
 
         if (selectedType) {
-            results = results.filter(venue => venue.type === selectedType);
+            results = results.filter(venue => venue.types?.includes(selectedType as any));
         }
 
         if (selectedType === 'restaurant' && selectedSubType) {
-            results = results.filter(venue => venue.restaurantType === selectedSubType);
+            // Treat venues without an explicit restaurantType as 'normal'
+            results = results.filter(venue => (venue.restaurantType ?? 'normal') === selectedSubType);
         }
         
         setFilteredVenues(results);
@@ -259,7 +260,7 @@ const VenueFinder: React.FC = () => {
                             filteredVenues.map(venue => (
                                 <div key={venue.id} style={{ border: '1px solid #ccc', padding: '15px', marginBottom: '15px', borderRadius: '8px' }}>
                                     <h2>{venue.name}</h2>
-                                    <p><strong>Typ:</strong> {venue.type}</p>
+                                    <p><strong>Typ:</strong> {venue.types.join(', ')}</p>
                                     <p><strong>Adresa:</strong> {venue.address}</p>
                                     <p><strong>Hodnotenie:</strong> {venue.reviews || 'N/A'}</p>
                                     {venue.website && <p><a href={venue.website} target="_blank" rel="noopener noreferrer">Web</a></p>}

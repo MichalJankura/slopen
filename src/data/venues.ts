@@ -6,10 +6,10 @@ export const venues: Venue[] = [
   {
     id: 'pizza-palma',
     name: 'Pizza Palma',
-    type: 'restaurant',
-    restaurantType: 'normal',
+    types: ['restaurant'],
     address: 'Reštaurácia PALMA, Za Vodou 1387/3, Stará Ľubovňa, 064 01',
     reviews: '4*', // Example review rating
+  restaurantType: 'normal',
     weeklyHours: {
       mon: { open: '10:00', close: '22:00' },
       tue: { open: '10:00', close: '22:00' },
@@ -27,8 +27,9 @@ export const venues: Venue[] = [
   {
     id: 'pizzeria-dafofo',
     name: 'Pizzeria Da Fofo',
-    type: 'restaurant',
+    types: ['restaurant'],
     address: 'Levočská 3, 064 01 Stará Ľubovňa',
+  restaurantType: 'normal',
     weeklyHours: {
       mon: { open: '10:00', close: '22:00' },
       tue: { open: '10:00', close: '22:00' },
@@ -45,8 +46,9 @@ export const venues: Venue[] = [
   {
     id: 'restauracia-kolkaren',
     name: 'Reštaurácia Kolkáreň',
-    type: 'restaurant',
+    types: ['restaurant'],
     address: 'Námestie svätého Mikuláša 12, 064 01 Stará Ľubovňa',
+  restaurantType: 'tradičná',
     weeklyHours: {
   mon: { open: '10:00', close: '22:00' },
   tue: { open: '10:00', close: '22:00' },
@@ -72,9 +74,10 @@ export const venues: Venue[] = [
   },
   {
     id: 'pho-dem',
-    name: 'PHỞ ĐÊM',
-    type: 'restaurant',
+    name: 'PHỞ ĐÊM Stará Ľubovňa',
+    types: ['restaurant'],
     address: 'Letná 1073/6 064 03 Stará Ľubovňa',
+  restaurantType: 'ázijská',
     weeklyHours: {
       mon: { open: '10:00', close: '21:00' },
       tue: { open: '10:00', close: '21:00' },
@@ -92,7 +95,7 @@ export const venues: Venue[] = [
   {
     id: 'src-kaviaren',
     name: 'ŠRC Kaviareň',
-    type: 'cafe',
+    types: ['cafe'],
     address: 'Okružná 16/A, Stará Ľubovňa',
     weeklyHours: {
       mon: { open: '14:00', close: '21:00' },
@@ -111,7 +114,7 @@ export const venues: Venue[] = [
   {
     id: 'ecko-bar',
     name: 'EČKO Bar',
-    type: 'pub',
+    types: ['pub'],
     address: 'Tehelná 462, 064 01 Stará Ľubovňa',
     weeklyHours: {
       mon: { open: '15:00', close: '23:00' },
@@ -128,8 +131,8 @@ export const venues: Venue[] = [
   {
     id: 'pivaren-neptun',
     name: 'Piváreň Neptún',
-    type: 'pub',
-    address: 'Stará Ľubovňa', // Add complete address if available
+    types: ['pub'],
+    address: 'Mierová 1098/62, 064 01 Stará Ľubovňa', // Add complete address if available
     weeklyHours: {
       mon: { open: '17:00', close: '22:00' },
       tue: { open: '17:00', close: '22:00' },
@@ -148,8 +151,9 @@ export const venues: Venue[] = [
   {
     id: 'restauracia-shang-hai',
     name: 'Reštaurácia Shang Hai',
-    type: 'restaurant',
+    types: ['restaurant'],
     address: 'Levočská, 064 01 Stará Ľubovňa, Slovakia',
+  restaurantType: 'ázijská',
     weeklyHours: {
       mon: { open: '10:00', close: '22:00' },
       tue: { open: '10:00', close: '22:00' },
@@ -164,8 +168,9 @@ export const venues: Venue[] = [
   {
     id: 'motorest-salas-u-franka',
     name: 'Motorest Salaš u Franka',
-    type: 'restaurant',
+    types: ['restaurant'],
     address: 'Popradská 682, 064 01 Stará Ľubovňa',
+  restaurantType: 'tradičná',
     weeklyHours: {
       mon: { open: '08:30', close: '22:00' },
       tue: { open: '08:30', close: '22:00' },
@@ -175,13 +180,16 @@ export const venues: Venue[] = [
       sat: { open: '09:00', close: '23:00' },
       sun: { open: '09:00', close: '22:00' }
     },
-    image: 'https://visitspis.sk/wp-content/uploads/2020/10/jan_6300-scaled.jpg'
+    image: 'https://visitspis.sk/wp-content/uploads/2020/10/jan_6300-scaled.jpg',
+    website: 'https://www.salasufranka.sk/',
+    facebook: 'https://www.facebook.com/salasufranka/?locale=sk_SK',
   },
   {
     id: 'kebabing',
     name: 'Kebabing',
-    type: 'restaurant',
+    types: ['restaurant'],
     address: 'Nám. Sv. Mikuláša 18A, Stará Ľubovňa, Slovakia',
+  restaurantType: 'normal',
     weeklyHours: {
       mon: { open: '10:00', close: '22:00' },
       tue: { open: '10:00', close: '22:00' },
@@ -197,8 +205,9 @@ export const venues: Venue[] = [
   {
     id: 'damask-kebab',
     name: 'Damask Kebab',
-    type: 'restaurant',
+    types: ['restaurant'],
     address: 'Obchodná 1110, 064 01 Stará Ľubovňa',
+  restaurantType: 'normal',
     weeklyHours: {
       mon: { open: '11:00', close: '24:00' },
       tue: { open: '11:00', close: '24:00' },
@@ -213,8 +222,9 @@ export const venues: Venue[] = [
   {
     id: 'chaluj-burger-beer',
     name: 'Chaluj Burger & Beer',
-    type: 'restaurant',
+    types: ['restaurant'],
     address: 'Obchodná 1110/3, 064 01 Stará Ľubovňa',
+  restaurantType: 'normal',
     weeklyHours: {
       mon: { open: '12:00', close: '22:00' },
       tue: { open: '12:00', close: '22:00' },
@@ -224,6 +234,221 @@ export const venues: Venue[] = [
       sat: { open: '15:00', close: '00:00' },
       sun: null
     },
-    image: 'https://scontent.fksc2-1.fna.fbcdn.net/v/t39.30808-6/482191312_942962238032035_3132695990819055155_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=cc71e4&_nc_ohc=75IZEVbNovEQ7kNvwEubqgB&_nc_oc=Adk3IfAzGGEtDTB3AkNWbaMURUZTwVJ8s6ZSdMwnH8niWYOdtuFPB-xmXo63iqClFyM&_nc_zt=23&_nc_ht=scontent.fksc2-1.fna&_nc_gid=tGqx9IEAg94MKKtw3yXvJg&oh=00_AfWPXAgtOjDJZJGn75YZsGiQ316zyJ8jSd2T9jVnoBLYhQ&oe=68A4AF2E'
+    image: 'https://scontent.fksc2-1.fna.fbcdn.net/v/t39.30808-6/482191312_942962238032035_3132695990819055155_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=cc71e4&_nc_ohc=75IZEVbNovEQ7kNvwEubqgB&_nc_oc=Adk3IfAzGGEtDTB3AkNWbaMURUZTwVJ8s6ZSdMwnH8niWYOdtuFPB-xmXo63iqClFyM&_nc_zt=23&_nc_ht=scontent.fksc2-1.fna&_nc_gid=tGqx9IEAg94MKKtw3yXvJg&oh=00_AfWPXAgtOjDJZJGn75YZsGiQ316zyJ8jSd2T9jVnoBLYhQ&oe=68A4AF2E',
+    facebook: 'https://www.facebook.com/Chalujburgerbeer/?locale=sk_SK'
+  },
+  {
+    id: 'soska-coffee-market-beauty',
+    name: 'SOŠKA - coffee-market-beauty',
+    types: ['cafe'],
+    address: 'Námestie svätého Mikuláša 24/24, 064 01 Stará Ľubovňa',
+    weeklyHours: {
+      mon: { open: '09:00', close: '18:00' },
+      tue: { open: '09:00', close: '18:00' },
+      wed: { open: '09:00', close: '18:00' },
+      thu: { open: '09:00', close: '18:00' },
+      fri: { open: '09:00', close: '19:00' },
+      sat: { open: '13:30', close: '19:00' },
+      sun: { open: '13:30', close: '19:00' }
+    },
+    facebook: 'https://www.facebook.com/p/soskasl-100091129954884/',
+    instagram: 'https://www.instagram.com/soska.sl/',
+    image: 'https://lh3.googleusercontent.com/p/AF1QipPpINkUWV-Q6SloFVfG45xW-NhQYBrGgOGvdMts=s1360-w1360-h1020-rw'
+  },
+  {
+    id: 'castle-distillery',
+    name: 'Castle DISTILLERY',
+    types: ['pub'],
+    address: 'Zámocká 766, 064 01 Stará Ľubovňa', // Add full address if available
+    weeklyHours: {
+      mon: { open: '10:00', close: '21:00' },
+      tue: { open: '10:00', close: '21:00' },
+      wed: { open: '10:00', close: '21:00' },
+      thu: { open: '10:00', close: '21:00' },
+      fri: { open: '10:00', close: '21:00' },
+      sat: { open: '10:00', close: '21:00' },
+      sun: { open: '10:00', close: '21:00' }
+    },
+    website: 'https://www.castledistillery.sk/',
+    facebook: 'https://www.facebook.com/castledistillery/',
+    instagram: 'https://www.instagram.com/castle_distillery/',
+    image: 'https://cf.bstatic.com/xdata/images/hotel/max1024x768/480527341.jpg?k=d3a2c528dcc123d0d6d366bae639a753ecad8cbdecda9092e0f1b67df3cd50af&o=&hp=1'
+  },
+  {
+    id: 'u-jelena',
+    name: 'U Jeleňa',
+    types: ['restaurant', 'pub'],
+    address: 'Námestie svätého Mikuláša 22, 064 01 Stará Ľubovňa',
+    weeklyHours: {
+      mon: { open: '07:00', close: '20:00' },
+      tue: { open: '07:00', close: '20:00' },
+      wed: { open: '07:00', close: '20:00' },
+      thu: { open: '07:00', close: '20:00' },
+      fri: { open: '07:00', close: '20:00' },
+      sat: { open: '08:00', close: '19:00' },
+      sun: { open: '08:00', close: '19:00' }
+    },
+    website: 'http://www.ujelena.sk/index1.html',
+    facebook: 'https://www.facebook.com/ujelena.sk/',
+    image: 'https://lh3.googleusercontent.com/gps-cs-s/AC9h4no4etyNBc4LyZjtWsyrDt2gobuVtC-niT-LtTRYkqg44qoqZSZ-irAInLxTNsxJXsvupYJ-hdjmVA3opKqDSkCtaTFRPtz7ykVm4Lx-4-16oPzFaFNZrFYcIv9Z3Eic2qpmaBzyYw=s680-w680-h510-rw'
+  },
+  {
+    id: 'panorama',
+    name: 'Reštaurácia Panorama',
+    types: ['restaurant'],
+    address: 'Popradská 1523/10, 064 01 Stará Ľubovňa',
+  restaurantType: 'normal',
+    weeklyHours: {
+      mon: { open: '10:30', close: '14:30' },
+      tue: { open: '10:30', close: '14:30' },
+      wed: { open: '10:30', close: '14:30' },
+      thu: { open: '10:30', close: '14:30' },
+      fri: { open: '10:30', close: '14:30' },
+      sat: null,
+      sun: null
+    },
+    website: 'https://palmagastro.sk/',
+    image: 'https://palmagastro.sk/wp-content/uploads/2016/02/IMG_7848-1.jpg'
+  },
+  {
+    id: 'cukraren-marianna',
+    name: 'Cukráreň Marianna',
+    types: ['cafe'],
+    address: 'Námestie generála Štefánika 3, 064 01 Stará Ľubovňa',
+    weeklyHours: {
+      mon: { open: '08:00', close: '18:00' },
+      tue: { open: '08:00', close: '18:00' },
+      wed: { open: '08:00', close: '18:00' },
+      thu: { open: '08:00', close: '18:00' },
+      fri: { open: '08:00', close: '18:00' },
+      sat: { open: '10:00', close: '18:00' },
+      sun: { open: '11:00', close: '19:00' }
+    },
+    website: 'https://mariannanova.sk/',
+    facebook: 'https://www.facebook.com/mariannanovasro',
+    image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQG3yejoLxSVeRmXVwEnwJei-RlP4aicJ-aJQ&s'
+  },
+    {
+    id: 'pekaren-marianna',
+    name: 'Pekáreň Marianna',
+    types: ['bakery'],
+    address: 'Námestie generála Štefánika 3, 064 01 Stará Ľubovňa',
+    weeklyHours: {
+      mon: { open: '07:00', close: '17:30' },
+      tue: { open: '07:00', close: '17:30' },
+      wed: { open: '07:00', close: '17:30' },
+      thu: { open: '07:00', close: '17:30' },
+      fri: { open: '07:00', close: '17:30' },
+      sat: null,
+      sun: null
+    },
+    website: 'https://mariannanova.sk/',
+    facebook: 'https://www.facebook.com/mariannanovasro',
+    image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQG3yejoLxSVeRmXVwEnwJei-RlP4aicJ-aJQ&s'
+  },
+    {
+    id: 'damask-kebab-druzba',
+    name: 'Damask Kebab Družba',
+    types: ['restaurant'],
+    address: 'Stará Ľubovňa 064 01, 064 01 Stará Ľubovňa',
+    weeklyHours: {
+      mon: { open: '10:00', close: '22:00' },
+      tue: { open: '10:00', close: '22:00' },
+      wed: { open: '10:00', close: '22:00' },
+      thu: { open: '10:00', close: '22:00' },
+      fri: { open: '10:00', close: '22:00' },
+      sat: { open: '10:00', close: '22:00' },
+      sun: null
+    },
+    image: 'https://lh3.googleusercontent.com/gps-cs-s/AC9h4noQ92TKmovotZUu2fa-RwLbF4QVxRmTFwBFgQ4uGHRONFGFh72toNWkWTchiFi1zH82QX49d-EDCHQlm57XcUa97Z8-HaY9bGA_pjBnMw87QF3DbMjvDCqUceaBDZ1aQCX2sioXNFpp3Ktn=w426-h240-k-no'
+  },
+  {
+    id: 'nasa-kava',
+    name: 'Naša káva',
+    types: ['cafe'],
+    address: 'Levočská 370/36, 064 01 Stará Ľubovňa',
+    weeklyHours: {
+      mon: { open: '08:00', close: '18:00' },
+      tue: { open: '08:00', close: '18:00' },
+      wed: { open: '08:00', close: '18:00' },
+      thu: { open: '08:00', close: '18:00' },
+      fri: { open: '08:00', close: '18:00' },
+      sat: { open: '12:00', close: '17:00' },
+      sun: { open: '12:00', close: '17:00' }
+    },
+    website: 'http://www.nasakava.shop/',
+    facebook: 'https://www.facebook.com/nasakavas.r.o',
+    image: 'https://scontent.fksc2-1.fna.fbcdn.net/v/t39.30808-6/485318352_650530924367374_5528982152472719369_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=106&ccb=1-7&_nc_sid=cc71e4&_nc_ohc=XgjeB0Oa_VAQ7kNvwHFYfCH&_nc_oc=AdlwcHTcNO0txbGftrgYR9DrFpf2lKg7q-5_McWRypYlR2vLwOqTova3FmM60QXIGDQ&_nc_zt=23&_nc_ht=scontent.fksc2-1.fna&_nc_gid=FuP9Rs-HdKIJuto5iJfKYA&oh=00_AfVgIS9tKpTptGbMwOGW2vWeoFBiBFrSQBybFcHgTADoAw&oe=68A6205A'
+  },
+  {
+    id: 'bistro-stelka',
+    name: 'Bistro Štelka',
+    types: ['restaurant'],
+    address: 'Nová Ľubovňa 666, 065 11 Nová Ľubovňa',
+    weeklyHours: {
+      mon: { open: '14:00', close: '21:45' },
+      tue: { open: '14:00', close: '21:45' },
+      wed: { open: '14:00', close: '21:45' },
+      thu: { open: '14:00', close: '21:45' },
+      fri: { open: '14:00', close: '22:45' },
+      sat: { open: '15:30', close: '22:45' },
+      sun: { open: '15:30', close: '21:45' }
+    },
+    website: 'http://www.stelka.sk/',
+    facebook: 'https://www.facebook.com/www.stelka.sk/',
+    image: 'https://lh3.googleusercontent.com/gps-cs-s/AC9h4noAnGW2lxYc3AOuR8HIJ9UilkCOgxk3DS_9CrPwRgesdYut-q_K_DwzoGkpx7Z0pn-CPwXV5qP8Rj_J4E6KpvbG6Yrc3Fm_6RyX2sY3dpUbX5tj7Qa6IPxV0y8vmHLrnUunyAW_iA=w408-h544-k-no'
+  },
+  {
+    id: 'sipka-klub',
+    name: 'Šípka Klub',
+    types: ['pub'],
+    address: 'Hviezdoslavova 92, 064 01 Stará Ľubovňa',
+    weeklyHours: {
+      mon: { open: '16:00', close: '23:00' },
+      tue: { open: '16:00', close: '23:00' },
+      wed: { open: '16:00', close: '23:00' },
+      thu: { open: '16:00', close: '23:00' },
+      fri: { open: '16:00', close: '00:00' },
+      sat: { open: '14:00', close: '00:00' },
+      sun: { open: '14:00', close: '22:00' }
+    },
+    facebook: 'https://www.facebook.com/profile.php?id=100063732541524',
+    image: 'https://scontent.fksc2-1.fna.fbcdn.net/v/t39.30808-6/487994754_1229577639176643_4344249935378039806_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=cc71e4&_nc_ohc=xxH3uMVn8joQ7kNvwH7lFkT&_nc_oc=AdnFHX61Bqm1eYUtyd_p7v8yS5TdUv26YtY84pGkmjlqCaMGGY0l9HIZT0IVRyd7U28&_nc_zt=23&_nc_ht=scontent.fksc2-1.fna&_nc_gid=Bwq_ayIL3c-nutgkFopWwA&oh=00_AfVRBhDQrLS3RERAaUpBTAQVNS2fpHlF-WApkaRQSoot4g&oe=68A63252'
+  },
+  {
+    id: 'penzion-koliba',
+    name: 'Penzión Koliba Stará Ľubovňa',
+    types: ['restaurant'],
+    address: 'Popradská 1769/70, 064 01 Stará Ľubovňa',
+  restaurantType: 'tradičná',
+    weeklyHours: {
+      mon: { open: '07:30', close: '18:00' },
+      tue: { open: '07:30', close: '18:00' },
+      wed: { open: '07:30', close: '18:00' },
+      thu: { open: '07:30', close: '18:00' },
+      fri: { open: '07:30', close: '18:00' },
+      sat: { open: '10:00', close: '19:00' },
+      sun: { open: '10:00', close: '19:00' }
+    },
+    website: 'http://www.koliba-lubovna.sk/',
+    facebook: 'https://www.facebook.com/kolibastaralubovna/?locale=sk_SK',
+    image: 'https://scontent.fksc2-1.fna.fbcdn.net/v/t39.30808-6/464710339_8873053629412270_5093198155991740227_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=a5f93a&_nc_ohc=HhnJ9rulIQcQ7kNvwF4AuxS&_nc_oc=AdmyK_FnY0jtZI1MY5AMBlFserCwP9rvHMYfYzHrwXBuwX3C5v-MJM1ADxfMb79VWk8&_nc_zt=23&_nc_ht=scontent.fksc2-1.fna&_nc_gid=aw6IQ4lqUbkMu5yLj-FJnQ&oh=00_AfVLK9yFrOa_BTs3sdlnKGuylqjNxfy1Ka_QO2oeQM3GLQ&oe=68A64481'
+  },
+  {
+    id: 'tenisovy-klub-sport-bar',
+    name: 'Tenisový Klub Stará Ľubovňa Sport Bar',
+    types: ['pub'],
+    address: 'Továrenská 1342/30, 064 01 Stará Ľubovňa',
+    weeklyHours: {
+      mon: { open: '11:00', close: '22:00' },
+      tue: { open: '11:00', close: '22:00' },
+      wed: { open: '11:00', close: '22:00' },
+      thu: { open: '11:00', close: '22:00' },
+      fri: { open: '11:00', close: '22:00' },
+      sat: { open: '11:00', close: '22:00' },
+      sun: { open: '11:00', close: '22:00' }
+    },
+    website: 'https://www.tenislubovna.sk/sport-bar/',
+    image: 'https://www.tenislubovna.sk/resources/App/201810102127240.dscn1190-1.jpg'
   }
 ];

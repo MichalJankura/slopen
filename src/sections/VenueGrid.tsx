@@ -20,7 +20,7 @@ export const VenueGrid: React.FC = () => {
 
   const filtered = useMemo(() => {
     return enriched
-      .filter(v => (filter === 'all' ? true : v.type === filter))
+      .filter(v => (filter === 'all' ? true : v.types.includes(filter as any)))
       .filter(v => (onlyOpen ? v.isOpen : true))
       .filter(v => v.name.toLowerCase().includes(query.toLowerCase()));
   }, [filter, onlyOpen, query, enriched]);

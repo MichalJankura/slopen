@@ -11,10 +11,13 @@ export type ReviewRating = '1*' | '2*' | '3*' | '4*' | '5*';
 
 export type RestaurantType = 'tradičná' | 'ázijská' | 'normal';
 
+export type VenueCategory = 'restaurant' | 'cafe' | 'pub' | 'bar' | 'bakery' | 'club';
+
 export interface Venue {
   id: string;
   name: string;
-  type: 'restaurant' | 'pub' | 'club' | 'cafe';
+  // type: 'restaurant' | 'pub' | 'club' | 'cafe';
+  types: VenueCategory[];
   address: string;
   reviews?: ReviewRating;
   weeklyHours: WeeklyHours; // precise weekly schedule

@@ -10,7 +10,7 @@ const App: React.FC = () => {
       <SEO />
       <Navbar />
       <main>
-        <VenueFinder />
+        {/* <VenueFinder /> */}
         <Hero />
         <VenueGrid />
         <Footer />
@@ -64,9 +64,9 @@ const Navbar: React.FC = () => {
         <a href="#" className="font-black tracking-tight text-xl flex items-center gap-2 select-none">
           <BrandName />
         </a>
-        <div className="flex items-center gap-6 text-sm font-medium">
+        {/* <div className="flex items-center gap-6 text-sm font-medium">
           <a href="#miesta" className="hover:text-primary transition-colors">Miesta</a>
-        </div>
+        </div> */}
       </div>
     </nav>
   );
