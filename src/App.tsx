@@ -15,7 +15,7 @@ const App: React.FC = () => {
         <Hero />
         <VenueGrid />
   {/* Dev tool: Google reviews extractor */}
-  <ReviewsExtractor />
+  {/* <ReviewsExtractor /> */}
         <Footer />
       </main>
     </>
