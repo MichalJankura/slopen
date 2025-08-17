@@ -19,3 +19,11 @@ declare module 'qrcode.react' {
   export const QRCodeCanvas: React.FC<QRCodeProps>;
   export const QRCodeSVG: React.FC<QRCodeProps>;
 }
+
+// Vite env typings
+interface ImportMetaEnv {
+  readonly VITE_GOOGLE_API_KEY?: string;
+}
+interface ImportMeta {
+  readonly env: ImportMetaEnv;
+}

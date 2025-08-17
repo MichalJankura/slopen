@@ -3,6 +3,7 @@ import { Hero } from './sections/Hero';
 import { VenueGrid } from './sections/VenueGrid';
 import { SEO } from './components/SEO';
 import VenueFinder from './components/VenueFinder';
+import { ReviewsExtractor } from './review_extractor/reviews_extractor';
 
 const App: React.FC = () => {
   return (
@@ -13,6 +14,8 @@ const App: React.FC = () => {
         {/* <VenueFinder /> */}
         <Hero />
         <VenueGrid />
+  {/* Dev tool: Google reviews extractor */}
+  <ReviewsExtractor />
         <Footer />
       </main>
     </>
