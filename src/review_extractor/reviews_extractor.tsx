@@ -2,12 +2,29 @@ import React, { useCallback, useEffect, useRef, useState } from 'react';
 
 // IMPORTANT: Move your API key to a Vite env variable (VITE_GOOGLE_API_KEY) – do NOT hard‑code secrets in the repo.
 // Create a .env file with: VITE_GOOGLE_API_KEY=your_key_here
-// In dev we use a local proxy (vite dev middleware). In production (static hosting) that proxy does NOT exist,
-// so we fallback to calling Google APIs directly (with a restricted browser key) to avoid 404s.
-// Provide BOTH keys locally if desired: GOOGLE_API_KEY (server side) and VITE_GOOGLE_API_KEY (client fallback).
+// In dev we use a local proxy (vite dev middleware). In production (static hosting) that proxy does NOT exist.
+// We therefore use the Google Maps JavaScript PlacesService (which is CORS-safe) instead of Web Service fetch calls.
+// Provide BOTH keys locally if desired: GOOGLE_API_KEY (server side) and VITE_GOOGLE_API_KEY (browser key restricted by HTTP referrer).
 const BROWSER_KEY = import.meta.env.VITE_GOOGLE_API_KEY as string | undefined;
 const USE_PROXY = import.meta.env.DEV; // proxy only present during `vite dev`.
 const CLIENT_KEY_PRESENT = !!BROWSER_KEY;
+
+// --- Google Maps JS SDK loader (used only in production fallback) -----------------
+let gmapsLoading: Promise<void> | null = null;
+function loadGoogleMapsScript(apiKey: string): Promise<void> {
+  if (typeof window === 'undefined') return Promise.resolve();
+  if ((window as any).google && (window as any).google.maps) return Promise.resolve();
+  if (gmapsLoading) return gmapsLoading;
+  gmapsLoading = new Promise((resolve, reject) => {
+    const script = document.createElement('script');
+    script.src = `https://maps.googleapis.com/maps/api/js?key=${apiKey}&libraries=places&language=sk`;
+    script.async = true;
+    script.onerror = () => reject(new Error('Failed to load Google Maps JS SDK'));
+    (script.onload as any) = () => resolve();
+    document.head.appendChild(script);
+  });
+  return gmapsLoading;
+}
 
 // Original raw URLs list
 const RAW_URLS = [
@@ -65,17 +82,18 @@ async function findPlaceId(query: string): Promise<string | null> {
     if (data.status === 'OK' && data.place_id) return data.place_id;
     return null;
   } else {
-    if (!BROWSER_KEY) throw new Error('Missing VITE_GOOGLE_API_KEY for direct production calls');
-    const url = new URL('https://maps.googleapis.com/maps/api/place/findplacefromtext/json');
-    url.searchParams.set('input', query);
-    url.searchParams.set('inputtype', 'textquery');
-    url.searchParams.set('fields', 'place_id');
-    url.searchParams.set('key', BROWSER_KEY);
-    const resp = await fetch(url.toString());
-    if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
-    const data = await resp.json();
-    if (data.status === 'OK' && data.candidates?.[0]?.place_id) return data.candidates[0].place_id;
-    return null;
+    if (!BROWSER_KEY) throw new Error('Missing VITE_GOOGLE_API_KEY for browser PlacesService');
+    await loadGoogleMapsScript(BROWSER_KEY);
+    const svc = new (window as any).google.maps.places.PlacesService(document.createElement('div'));
+    return new Promise<string | null>((resolve) => {
+      svc.findPlaceFromQuery({ query, fields: ['place_id'] }, (results: any, status: any) => {
+        if (status === (window as any).google.maps.places.PlacesServiceStatus.OK && results && results[0]?.place_id) {
+          resolve(results[0].place_id);
+        } else {
+          resolve(null);
+        }
+      });
+    });
   }
 }
 
@@ -91,16 +109,18 @@ async function fetchDetails(placeId: string) {
     if (data.status === 'OK') return data.result;
     return null;
   } else {
-    if (!BROWSER_KEY) throw new Error('Missing VITE_GOOGLE_API_KEY for direct production calls');
-    const url = new URL('https://maps.googleapis.com/maps/api/place/details/json');
-    url.searchParams.set('place_id', placeId);
-    url.searchParams.set('fields', 'name,rating,user_ratings_total');
-    url.searchParams.set('key', BROWSER_KEY);
-    const resp = await fetch(url.toString());
-    if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
-    const data = await resp.json();
-    if (data.status === 'OK') return data.result;
-    return null;
+    if (!BROWSER_KEY) throw new Error('Missing VITE_GOOGLE_API_KEY for browser PlacesService');
+    await loadGoogleMapsScript(BROWSER_KEY);
+    const svc = new (window as any).google.maps.places.PlacesService(document.createElement('div'));
+    return new Promise<any | null>((resolve) => {
+      svc.getDetails({ placeId, fields: ['name', 'rating', 'user_ratings_total'] }, (res: any, status: any) => {
+        if (status === (window as any).google.maps.places.PlacesServiceStatus.OK && res) {
+          resolve(res);
+        } else {
+          resolve(null);
+        }
+      });
+    });
   }
 }
 
