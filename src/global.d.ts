@@ -23,6 +23,8 @@ declare module 'qrcode.react' {
 // Vite env typings
 interface ImportMetaEnv {
   readonly VITE_GOOGLE_API_KEY?: string;
+  readonly DEV?: boolean; // Vite injects import.meta.env.DEV at build time
+  readonly PROD?: boolean; // Vite injects import.meta.env.PROD
 }
 interface ImportMeta {
   readonly env: ImportMetaEnv;

@@ -2,9 +2,12 @@ import React, { useCallback, useEffect, useRef, useState } from 'react';
 
 // IMPORTANT: Move your API key to a Vite env variable (VITE_GOOGLE_API_KEY) – do NOT hard‑code secrets in the repo.
 // Create a .env file with: VITE_GOOGLE_API_KEY=your_key_here
-// We no longer call Google APIs directly from the browser (CORS + security). Instead we hit dev server proxy routes.
-// API key now expected in .env as GOOGLE_API_KEY (NOT exposed) or fallback VITE_GOOGLE_API_KEY for transitional use.
-const CLIENT_KEY_PRESENT = !!import.meta.env.VITE_GOOGLE_API_KEY; // only to hint to user if missing server key.
+// In dev we use a local proxy (vite dev middleware). In production (static hosting) that proxy does NOT exist,
+// so we fallback to calling Google APIs directly (with a restricted browser key) to avoid 404s.
+// Provide BOTH keys locally if desired: GOOGLE_API_KEY (server side) and VITE_GOOGLE_API_KEY (client fallback).
+const BROWSER_KEY = import.meta.env.VITE_GOOGLE_API_KEY as string | undefined;
+const USE_PROXY = import.meta.env.DEV; // proxy only present during `vite dev`.
+const CLIENT_KEY_PRESENT = !!BROWSER_KEY;
 
 // Original raw URLs list
 const RAW_URLS = [
@@ -51,28 +54,54 @@ function extractQuery(rawUrl: string): string {
 const TEXT_QUERIES = RAW_URLS.map(extractQuery);
 
 async function findPlaceId(query: string): Promise<string | null> {
-  const resp = await fetch(`/api/places/find?q=${encodeURIComponent(query)}`);
-  if (!resp.ok) {
-    let msg = `HTTP ${resp.status}`;
-    try { const j = await resp.json(); if (j?.message) msg += ` – ${j.message}`; } catch {}
-    throw new Error(msg);
+  if (USE_PROXY) {
+    const resp = await fetch(`/api/places/find?q=${encodeURIComponent(query)}`);
+    if (!resp.ok) {
+      let msg = `HTTP ${resp.status}`;
+      try { const j = await resp.json(); if (j?.message) msg += ` – ${j.message}`; } catch {}
+      throw new Error(msg);
+    }
+    const data = await resp.json();
+    if (data.status === 'OK' && data.place_id) return data.place_id;
+    return null;
+  } else {
+    if (!BROWSER_KEY) throw new Error('Missing VITE_GOOGLE_API_KEY for direct production calls');
+    const url = new URL('https://maps.googleapis.com/maps/api/place/findplacefromtext/json');
+    url.searchParams.set('input', query);
+    url.searchParams.set('inputtype', 'textquery');
+    url.searchParams.set('fields', 'place_id');
+    url.searchParams.set('key', BROWSER_KEY);
+    const resp = await fetch(url.toString());
+    if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+    const data = await resp.json();
+    if (data.status === 'OK' && data.candidates?.[0]?.place_id) return data.candidates[0].place_id;
+    return null;
   }
-  const data = await resp.json();
-  if (data.status === 'OK' && data.place_id) return data.place_id;
-  if (data.status && data.status !== 'OK') return null; // will mark skip
-  return null;
 }
 
 async function fetchDetails(placeId: string) {
-  const resp = await fetch(`/api/places/details?place_id=${encodeURIComponent(placeId)}`);
-  if (!resp.ok) {
-    let msg = `HTTP ${resp.status}`;
-    try { const j = await resp.json(); if (j?.message) msg += ` – ${j.message}`; } catch {}
-    throw new Error(msg);
+  if (USE_PROXY) {
+    const resp = await fetch(`/api/places/details?place_id=${encodeURIComponent(placeId)}`);
+    if (!resp.ok) {
+      let msg = `HTTP ${resp.status}`;
+      try { const j = await resp.json(); if (j?.message) msg += ` – ${j.message}`; } catch {}
+      throw new Error(msg);
+    }
+    const data = await resp.json();
+    if (data.status === 'OK') return data.result;
+    return null;
+  } else {
+    if (!BROWSER_KEY) throw new Error('Missing VITE_GOOGLE_API_KEY for direct production calls');
+    const url = new URL('https://maps.googleapis.com/maps/api/place/details/json');
+    url.searchParams.set('place_id', placeId);
+    url.searchParams.set('fields', 'name,rating,user_ratings_total');
+    url.searchParams.set('key', BROWSER_KEY);
+    const resp = await fetch(url.toString());
+    if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+    const data = await resp.json();
+    if (data.status === 'OK') return data.result;
+    return null;
   }
-  const data = await resp.json();
-  if (data.status === 'OK') return data.result;
-  return null;
 }
 
 type ReviewInfo = {
@@ -179,7 +208,7 @@ export const ReviewsExtractor: React.FC<{ autoStart?: boolean }> = ({ autoStart 
       <p className="mt-3 text-xs text-neutral-500 leading-relaxed">
         Dáta sa získavajú priamo z Google Places API (Find Place + Details). Pre produkčné použitie odporúčané spraviť serverové proxy / cache aby ste neodhalili kľúč a neprekročili kvóty. Tento nástroj je len pre vývoj a rýchly prehľad.
       </p>
-  {!CLIENT_KEY_PRESENT && <p className="mt-2 text-xs text-amber-400">Poznámka: nastav GOOGLE_API_KEY v .env (server proxy). Fallback VITE_GOOGLE_API_KEY ak potrebuješ.</p>}
+  {!CLIENT_KEY_PRESENT && <p className="mt-2 text-xs text-amber-400">Chýba VITE_GOOGLE_API_KEY (potrebné pre produkčný fallback bez proxy). V dev môžeš použiť aj serverový GOOGLE_API_KEY.</p>}
     </section>
   );
 };
