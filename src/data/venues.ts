@@ -544,6 +544,7 @@ export const venues: Venue[] = [
     },
     facebook: 'https://www.facebook.com/bururupub/?locale=sk_SK',
     image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTZub8SIyiJpHPT2_6SNPGWKIP2TV-rYj5vrQ&s',
+    instagram: 'https://www.instagram.com/bururu_pub/',
   },
   // Tenisový Klub Stará Ľubovňa Sport Bar
   {
