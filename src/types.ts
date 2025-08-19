@@ -27,6 +27,10 @@ export interface Venue {
   instagram?: string;
   tiktok?: string;
   image: string; // path or URL
+  /** Optional absolute or relative URL to a PDF with full menu */
+  menu?: string;
+  /** Optional PDF for daily menu / lunch menu */
+  dailyMenu?: string;
   // (Deprecated) hours?: string; // legacy single range support
 
   restaurantType?: RestaurantType; // e.g. 'pizzeria', 'steakhouse', etc.

@@ -3,12 +3,14 @@ import { venues } from '../data/venues';
 import { VenueCard } from '../components/VenueCard';
 import { useLocalFavourites } from '../hooks/useLocalFavourites';
 import { computeStatusForWeekly, attachKitchenStatus } from '../utils/time';
+import VenueDetailModal from '../components/VenueDetailModal';
 
 export const VenueGrid: React.FC = () => {
   const { favourites, toggleFavourite, isFavourite } = useLocalFavourites();
   const [filter, setFilter] = useState<string>('all');
   const [onlyOpen, setOnlyOpen] = useState<boolean>(false);
   const [query, setQuery] = useState('');
+  const [selected, setSelected] = useState<any | null>(null);
 
   const enriched = useMemo(() => {
     return venues.map(v => {
@@ -82,10 +84,11 @@ export const VenueGrid: React.FC = () => {
               const kMsg = k < 60 ? `kuchyňa ${k <= 5 ? 'sa čoskoro zatvára' : 'končí za ' + k + ' min'}` : '';
               if (kMsg) statusNote = statusNote ? statusNote + ' • ' + kMsg : kMsg;
             }
-            return <VenueCard key={v.id} venue={v} favourite={isFavourite(v.id)} onToggleFavourite={toggleFavourite} isOpen={v.isOpen} statusNote={statusNote} />;
+            return <VenueCard key={v.id} venue={v} favourite={isFavourite(v.id)} onToggleFavourite={toggleFavourite} isOpen={v.isOpen} statusNote={statusNote} onSelect={setSelected} />;
           })}
         </div>
       </div>
+      {selected && <VenueDetailModal venue={selected} onClose={() => setSelected(null)} />}
     </section>
   );
 };

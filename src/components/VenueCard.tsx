@@ -8,6 +8,7 @@ interface Props {
   onToggleFavourite: (id: string) => void;
   isOpen: boolean;
   statusNote?: string;
+  onSelect?: (venue: Venue) => void;
 }
 
 // Mapping from internal category codes to display labels
@@ -20,12 +21,18 @@ const typeLabel: Record<VenueCategory, string> = {
   club: 'Klub'
 };
 
-export const VenueCard: React.FC<Props> = ({ venue, favourite, onToggleFavourite, isOpen, statusNote }) => {
+export const VenueCard: React.FC<Props> = ({ venue, favourite, onToggleFavourite, isOpen, statusNote, onSelect }) => {
   return (
-    <div className="group relative bg-neutral-900 rounded-lg overflow-hidden shadow-card transition-transform duration-300 hover:-translate-y-1">
+    <div
+      className="group relative bg-neutral-900 rounded-lg overflow-hidden shadow-card transition-transform duration-300 hover:-translate-y-1 cursor-pointer"
+      onClick={() => onSelect && onSelect(venue)}
+      tabIndex={0}
+      onKeyDown={e => { if (e.key === 'Enter') onSelect && onSelect(venue); }}
+      role="button"
+    >
       <button
         aria-label={favourite ? 'Odstrániť z obľúbených' : 'Pridať medzi obľúbené'}
-        onClick={() => onToggleFavourite(venue.id)}
+        onClick={(e) => { e.stopPropagation(); onToggleFavourite(venue.id); }}
         className="absolute z-10 top-2 right-2 p-2 rounded-full bg-black/60 backdrop-blur hover:bg-black/80 text-primary"
       >
         {favourite ? <FaHeart className="text-primary" /> : <FaRegHeart />}
@@ -56,7 +63,7 @@ export const VenueCard: React.FC<Props> = ({ venue, favourite, onToggleFavourite
             {venue.address}
           </a>
         </p>
-  {/* Hours row */}
+        {/* Hours row */}
         <p className="text-xs"><span className={isOpen ? 'text-green-400' : 'text-red-400'}>{isOpen ? 'OTVORENÉ' : 'ZATVORENÉ'}</span> <span className="text-neutral-500 ml-1">{'todayHoursLabel' in venue ? (venue as any).todayHoursLabel : ''}</span>{statusNote && <span className="ml-2 text-[10px] text-neutral-400">{statusNote}</span>}</p>
         {'kitchenTodayLabel' in venue && (venue as any).kitchenTodayLabel && (
           <p className="text-[10px] text-neutral-500">Kuchyňa: {(venue as any).kitchenTodayLabel}{(venue as any).kitchenClosesInMinutes != null && (venue as any).kitchenClosesInMinutes <= 60 && <span className="ml-1 text-neutral-400">(končí za {(venue as any).kitchenClosesInMinutes}m)</span>}</p>
