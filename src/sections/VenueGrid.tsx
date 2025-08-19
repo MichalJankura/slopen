@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { venues } from '../data/venues';
 import { VenueCard } from '../components/VenueCard';
 import { useLocalFavourites } from '../hooks/useLocalFavourites';
@@ -15,6 +15,12 @@ export const VenueGrid: React.FC = () => {
 
   // Lock body scroll when a venue is selected (modal open)
   useLockBodyScroll(!!selected);
+  // Toggle body class to allow hiding navbar when modal active
+  useEffect(() => {
+    if (selected) document.body.classList.add('modal-open');
+    else document.body.classList.remove('modal-open');
+    return () => document.body.classList.remove('modal-open');
+  }, [selected]);
 
   const enriched = useMemo(() => {
     return venues.map(v => {

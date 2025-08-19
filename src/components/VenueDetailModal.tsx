@@ -25,15 +25,20 @@ export const VenueDetailModal: React.FC<Props> = ({ venue, onClose }) => {
   const todayKey: DayKey = dayMap[todayIndex];
 
   return (
-  <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/70 backdrop-blur-sm p-4 overflow-y-auto" role="dialog" aria-modal="true" aria-label={venue.name} onClick={onClose}>
-      <div className="relative w-full max-w-xl bg-neutral-900 rounded-xl shadow-2xl overflow-hidden" onClick={e => e.stopPropagation()}>
-        <button aria-label="Zavrieť" onClick={onClose} className="absolute top-3 right-3 z-10 w-8 h-8 flex items-center justify-center rounded-full bg-black/60 hover:bg-black/80 text-neutral-300 hover:text-white transition-colors text-lg font-bold">
-          ×
-        </button>
-        <div className="h-56 w-full overflow-hidden">
+  <div className="fixed inset-0 z-40 flex items-center justify-center bg-black/70 backdrop-blur-sm p-4 overflow-y-auto" role="dialog" aria-modal="true" aria-label={venue.name} onClick={onClose}>
+  <div className="relative w-full md:max-w-xl bg-neutral-900 rounded-2xl md:rounded-3xl shadow-2xl flex flex-col max-h-[100dvh] md:max-h-[calc(100dvh-2rem)] overflow-hidden" onClick={e => e.stopPropagation()}>
+        {/* Sticky top bar with close button (always visible) */}
+        <div className="sticky top-0 z-20 flex justify-end p-2 bg-gradient-to-b from-black/60 to-black/0 md:from-transparent">
+          <button aria-label="Zavrieť" onClick={onClose} className="w-9 h-9 flex items-center justify-center rounded-full bg-black/60 backdrop-blur hover:bg-black/80 text-neutral-300 hover:text-white transition-colors text-xl font-bold">
+            ×
+          </button>
+        </div>
+        {/* Image (shrinks on very small screens) */}
+        <div className="h-48 sm:h-56 w-full overflow-hidden -mt-12 md:mt-0">
           <img src={venue.image} alt={venue.name} className="h-full w-full object-cover" />
         </div>
-        <div className="p-6 flex flex-col gap-4">
+        {/* Scrollable content area */}
+        <div className="p-5 sm:p-6 flex flex-col gap-4 overflow-y-auto">
                         {/* Type badges */}
             <div className="flex flex-wrap gap-2 -mt-1">
               {venue.types?.map(t => (
