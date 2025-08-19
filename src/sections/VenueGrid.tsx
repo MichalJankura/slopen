@@ -4,6 +4,7 @@ import { VenueCard } from '../components/VenueCard';
 import { useLocalFavourites } from '../hooks/useLocalFavourites';
 import { computeStatusForWeekly, attachKitchenStatus } from '../utils/time';
 import VenueDetailModal from '../components/VenueDetailModal';
+import { useLockBodyScroll } from '../hooks/useLockBodyScroll';
 
 export const VenueGrid: React.FC = () => {
   const { favourites, toggleFavourite, isFavourite } = useLocalFavourites();
@@ -11,6 +12,9 @@ export const VenueGrid: React.FC = () => {
   const [onlyOpen, setOnlyOpen] = useState<boolean>(false);
   const [query, setQuery] = useState('');
   const [selected, setSelected] = useState<any | null>(null);
+
+  // Lock body scroll when a venue is selected (modal open)
+  useLockBodyScroll(!!selected);
 
   const enriched = useMemo(() => {
     return venues.map(v => {
