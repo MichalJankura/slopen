@@ -14,8 +14,8 @@ const App: React.FC = () => {
         {/* <VenueFinder /> */}
         <Hero />
         <VenueGrid />
-  {/* Dev tool: Google reviews extractor */}
-        <ReviewsExtractor />
+        {/* Dev tool: Google reviews extractor */}
+        {/* <ReviewsExtractor /> */}
         <Footer />
       </main>
     </>
