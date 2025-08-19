@@ -107,7 +107,7 @@ export const venues: Venue[] = [
     website: 'https://www.phodem.sk/',
     facebook: 'https://www.facebook.com/p/Ph%E1%BB%91-%C4%91%C3%AAm-61550971261155/?locale=sk_SK',
     instagram: 'https://www.instagram.com/phodem.restaurant?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==',
-    image: 'https://scontent.fksc2-1.fna.fbcdn.net/v/t39.30808-6/475419919_122236507118032375_1310630945736455483_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=102&ccb=1-7&_nc_sid=cc71e4&_nc_ohc=ifCTGhNlULwQ7kNvwEnsvSb&_nc_oc=AdkQukMCDY3ZLWHBDNhOMXlpkGmCnZkhd5IyBHZujaM0UXfv3ZKHfZvpt5lbIuRFkzM&_nc_zt=23&_nc_ht=scontent.fksc2-1.fna&_nc_gid=giJfiWd4KaULeM1OwaxIig&oh=00_AfXCN9UbQpXjziaAUeEuHx5Um42YZ8niwCB1knvtvZO-xw&oe=68A40FEC',
+    image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6K-J6Rw0h0B-nNheGM1rnKzZP7orTVg9_LQ&s',
     menu: '/menus/phodem_menu.pdf',
     dailyMenu: 'https://www.facebook.com/p/Ph%E1%BB%91-%C4%91%C3%AAm-61550971261155/?locale=sk_SK'
   },
@@ -282,7 +282,7 @@ export const venues: Venue[] = [
       sat: { open: '15:00', close: '00:00' },
       sun: null
     },
-    image: 'https://scontent.fksc2-1.fna.fbcdn.net/v/t39.30808-6/482191312_942962238032035_3132695990819055155_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=cc71e4&_nc_ohc=75IZEVbNovEQ7kNvwEubqgB&_nc_oc=Adk3IfAzGGEtDTB3AkNWbaMURUZTwVJ8s6ZSdMwnH8niWYOdtuFPB-xmXo63iqClFyM&_nc_zt=23&_nc_ht=scontent.fksc2-1.fna&_nc_gid=tGqx9IEAg94MKKtw3yXvJg&oh=00_AfWPXAgtOjDJZJGn75YZsGiQ316zyJ8jSd2T9jVnoBLYhQ&oe=68A4AF2E',
+    image: 'https://th.bing.com/th/id/OLC.VI8BQCTOupIryg480x360?&rs=1&pid=ImgDetMain&o=7&rm=3',
     facebook: 'https://www.facebook.com/Chalujburgerbeer/?locale=sk_SK',
     menu: '/menus/chaluj-burger-beer_menu.pdf'
   },
