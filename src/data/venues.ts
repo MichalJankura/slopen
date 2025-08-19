@@ -524,6 +524,27 @@ export const venues: Venue[] = [
     menu: 'http://www.koliba-lubovna.sk/dennemenu/koliba-jedalny-listok.pdf',
     dailyMenu: 'http://www.koliba-lubovna.sk/dennemenu/menu.pdf'
   },
+    // Bururu pub
+  {
+    id: 'bururu-pub',
+    name: 'Bururu Pub',
+    types: ['pub'],
+    address: 'Garbiarska 64/1, Stara lubovna, Slovakia, 06401',
+  rating: 4.5,
+  ratingCount: 79,
+    restaurantType: 'normal',
+    weeklyHours: {
+      mon: { open: '15:00', close: '00:00' },
+      tue: { open: '15:00', close: '00:00' },
+      wed: { open: '15:00', close: '00:00' },
+      thu: { open: '15:00', close: '00:00' },
+      fri: { open: '15:00', close: '02:00' },
+      sat: { open: '16:00', close: '02:00' },
+      sun: { open: '16:00', close: '00:00' }
+    },
+    facebook: 'https://www.facebook.com/bururupub/?locale=sk_SK',
+    image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTZub8SIyiJpHPT2_6SNPGWKIP2TV-rYj5vrQ&s',
+  },
   // Tenisový Klub Stará Ľubovňa Sport Bar
   {
     id: 'tenisovy-klub-sport-bar',
