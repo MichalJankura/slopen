@@ -1,6 +1,6 @@
 import React from 'react';
 import { Venue, VenueCategory } from '../types';
-import { FaHeart, FaRegHeart, FaInstagram, FaFacebook, FaGlobe, FaTiktok } from 'react-icons/fa6';
+import { FaHeart, FaRegHeart, FaInstagram, FaFacebook, FaGlobe, FaTiktok, FaStar, FaRegStar, FaStarHalf } from 'react-icons/fa6';
 
 interface Props {
   venue: Venue;
@@ -22,6 +22,15 @@ const typeLabel: Record<VenueCategory, string> = {
 };
 
 export const VenueCard: React.FC<Props> = ({ venue, favourite, onToggleFavourite, isOpen, statusNote, onSelect }) => {
+  const renderStars = (rating: number) => {
+    const stars = [];
+    for (let i = 1; i <= 5; i++) {
+  if (rating >= i) stars.push(<FaStar key={i} className="text-yellow-400" />);
+  else if (rating >= i - 0.5) stars.push(<FaStarHalf key={i} className="text-yellow-400" />);
+      else stars.push(<FaRegStar key={i} className="text-yellow-600/30" />);
+    }
+    return stars;
+  };
   return (
     <div
       className="group relative bg-neutral-900 rounded-lg overflow-hidden shadow-card transition-transform duration-300 hover:-translate-y-1 cursor-pointer"
@@ -63,6 +72,13 @@ export const VenueCard: React.FC<Props> = ({ venue, favourite, onToggleFavourite
             {venue.address}
           </a>
         </p>
+        {venue.rating && (
+          <div className="flex items-center gap-2 text-[11px]" aria-label={`Hodnotenie ${venue.rating} z 5 na základe ${venue.ratingCount} hodnotení`}>
+            <span className="flex gap-0.5">{renderStars(venue.rating)}</span>
+            <span className="text-neutral-300 font-medium tabular-nums">{venue.rating.toFixed(1)}</span>
+            {venue.ratingCount != null && <span className="text-neutral-500">({venue.ratingCount})</span>}
+          </div>
+        )}
         {/* Hours row */}
         <p className="text-xs"><span className={isOpen ? 'text-green-400' : 'text-red-400'}>{isOpen ? 'OTVORENÉ' : 'ZATVORENÉ'}</span> <span className="text-neutral-500 ml-1">{'todayHoursLabel' in venue ? (venue as any).todayHoursLabel : ''}</span>{statusNote && <span className="ml-2 text-[10px] text-neutral-400">{statusNote}</span>}</p>
         {'kitchenTodayLabel' in venue && (venue as any).kitchenTodayLabel && (

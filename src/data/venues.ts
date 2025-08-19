@@ -9,6 +9,8 @@ export const venues: Venue[] = [
     name: 'Pizza Palma',
     types: ['restaurant'],
     address: 'Reštaurácia PALMA, Za Vodou 1387/3, Stará Ľubovňa, 064 01',
+  rating: 4.5,
+  ratingCount: 883,
     reviews: '4*', // Example review rating
     restaurantType: 'normal',
     weeklyHours: {
@@ -33,6 +35,8 @@ export const venues: Venue[] = [
     name: 'Pizzeria Da Fofo',
     types: ['restaurant'],
     address: 'Levočská 3, 064 01 Stará Ľubovňa',
+  rating: 4.5,
+  ratingCount: 168,
     restaurantType: 'normal',
     weeklyHours: {
       mon: { open: '10:00', close: '22:00' },
@@ -54,6 +58,8 @@ export const venues: Venue[] = [
     name: 'Reštaurácia Kolkáreň',
     types: ['restaurant'],
     address: 'Námestie svätého Mikuláša 12, 064 01 Stará Ľubovňa',
+  rating: 4.1,
+  ratingCount: 1105,
     restaurantType: 'tradičná',
     weeklyHours: {
       mon: { open: '10:00', close: '22:00' },
@@ -86,6 +92,8 @@ export const venues: Venue[] = [
     name: 'PHỞ ĐÊM Stará Ľubovňa',
     types: ['restaurant'],
     address: 'Letná 1073/6 064 03 Stará Ľubovňa',
+  rating: 4.1,
+  ratingCount: 122,
     restaurantType: 'ázijská',
     weeklyHours: {
       mon: { open: '10:00', close: '21:00' },
@@ -109,6 +117,8 @@ export const venues: Venue[] = [
     name: 'ŠRC Kaviareň',
     types: ['cafe'],
     address: 'Okružná 16/A, Stará Ľubovňa',
+  rating: 4.3,
+  ratingCount: 303,
     weeklyHours: {
       mon: { open: '14:00', close: '21:00' },
       tue: { open: '14:00', close: '21:00' },
@@ -129,6 +139,8 @@ export const venues: Venue[] = [
     name: 'EČKO Bar',
     types: ['pub'],
     address: 'Tehelná 462, 064 01 Stará Ľubovňa',
+  rating: 4.6,
+  ratingCount: 92,
     weeklyHours: {
       mon: { open: '15:00', close: '23:00' },
       tue: { open: '15:00', close: '23:00' },
@@ -147,6 +159,8 @@ export const venues: Venue[] = [
     name: 'Piváreň Neptún',
     types: ['pub'],
     address: 'Mierová 1098/62, 064 01 Stará Ľubovňa', // Add complete address if available
+  rating: 4.7,
+  ratingCount: 172,
     weeklyHours: {
       mon: { open: '17:00', close: '22:00' },
       tue: { open: '17:00', close: '22:00' },
@@ -169,6 +183,8 @@ export const venues: Venue[] = [
     name: 'Reštaurácia Shang Hai',
     types: ['restaurant'],
     address: 'Levočská, 064 01 Stará Ľubovňa, Slovakia',
+  rating: 4.3,
+  ratingCount: 317,
     restaurantType: 'ázijská',
     weeklyHours: {
       mon: { open: '10:00', close: '22:00' },
@@ -187,6 +203,8 @@ export const venues: Venue[] = [
     name: 'Motorest Salaš u Franka',
     types: ['restaurant'],
     address: 'Popradská 682, 064 01 Stará Ľubovňa',
+  rating: 4.6,
+  ratingCount: 6019,
     restaurantType: 'tradičná',
     weeklyHours: {
       mon: { open: '08:30', close: '22:00' },
@@ -210,6 +228,8 @@ export const venues: Venue[] = [
     name: 'Kebabing',
     types: ['restaurant'],
     address: 'Nám. Sv. Mikuláša 18A, Stará Ľubovňa, Slovakia',
+  rating: 4.5,
+  ratingCount: 344,
     restaurantType: 'normal',
     weeklyHours: {
       mon: { open: '10:00', close: '22:00' },
@@ -230,6 +250,8 @@ export const venues: Venue[] = [
     name: 'Damask Kebab',
     types: ['restaurant'],
     address: 'Obchodná 1110, 064 01 Stará Ľubovňa',
+  rating: 4.6,
+  ratingCount: 135,
     restaurantType: 'normal',
     weeklyHours: {
       mon: { open: '11:00', close: '24:00' },
@@ -248,6 +270,8 @@ export const venues: Venue[] = [
     name: 'Chaluj Burger & Beer',
     types: ['restaurant'],
     address: 'Obchodná 1110/3, 064 01 Stará Ľubovňa',
+  rating: 4.7,
+  ratingCount: 294,
     restaurantType: 'normal',
     weeklyHours: {
       mon: { open: '12:00', close: '22:00' },
@@ -268,6 +292,8 @@ export const venues: Venue[] = [
     name: 'SOŠKA - coffee-market-beauty',
     types: ['cafe'],
     address: 'Námestie svätého Mikuláša 24/24, 064 01 Stará Ľubovňa',
+  rating: 4.9,
+  ratingCount: 61,
     weeklyHours: {
       mon: { open: '09:00', close: '18:00' },
       tue: { open: '09:00', close: '18:00' },
@@ -287,6 +313,8 @@ export const venues: Venue[] = [
     name: 'Castle DISTILLERY',
     types: ['pub'],
     address: 'Zámocká 766, 064 01 Stará Ľubovňa', // Add full address if available
+  rating: 4.3,
+  ratingCount: 154,
     weeklyHours: {
       mon: { open: '10:00', close: '21:00' },
       tue: { open: '10:00', close: '21:00' },
@@ -308,6 +336,8 @@ export const venues: Venue[] = [
     name: 'U Jeleňa',
     types: ['restaurant', 'pub'],
     address: 'Námestie svätého Mikuláša 22, 064 01 Stará Ľubovňa',
+  rating: 4.2,
+  ratingCount: 204,
     weeklyHours: {
       mon: { open: '07:00', close: '20:00' },
       tue: { open: '07:00', close: '20:00' },
@@ -329,6 +359,8 @@ export const venues: Venue[] = [
     name: 'Reštaurácia Panorama',
     types: ['restaurant'],
     address: 'Popradská 1523/10, 064 01 Stará Ľubovňa',
+  rating: 4.3,
+  ratingCount: 502,
     restaurantType: 'normal',
     weeklyHours: {
       mon: { open: '10:30', close: '14:30' },
@@ -349,6 +381,8 @@ export const venues: Venue[] = [
     name: 'Cukráreň Marianna',
     types: ['cafe'],
     address: 'Námestie generála Štefánika 3, 064 01 Stará Ľubovňa',
+  rating: 4.3,
+  ratingCount: 24,
     weeklyHours: {
       mon: { open: '08:00', close: '18:00' },
       tue: { open: '08:00', close: '18:00' },
@@ -369,6 +403,7 @@ export const venues: Venue[] = [
     name: 'Pekáreň Marianna',
     types: ['bakery'],
     address: 'Námestie generála Štefánika 3, 064 01 Stará Ľubovňa',
+  // rating intentionally omitted (shared brand)
     weeklyHours: {
       mon: { open: '07:00', close: '17:30' },
       tue: { open: '07:00', close: '17:30' },
@@ -389,6 +424,7 @@ export const venues: Venue[] = [
     name: 'Damask Kebab Družba',
     types: ['restaurant'],
     address: 'Stará Ľubovňa 064 01, 064 01 Stará Ľubovňa',
+  // rating not provided in list
     weeklyHours: {
       mon: { open: '10:00', close: '22:00' },
       tue: { open: '10:00', close: '22:00' },
@@ -406,6 +442,8 @@ export const venues: Venue[] = [
     name: 'Naša káva',
     types: ['cafe'],
     address: 'Levočská 370/36, 064 01 Stará Ľubovňa',
+  rating: 5.0,
+  ratingCount: 21,
     weeklyHours: {
       mon: { open: '08:00', close: '18:00' },
       tue: { open: '08:00', close: '18:00' },
@@ -426,6 +464,8 @@ export const venues: Venue[] = [
     name: 'Bistro Štelka',
     types: ['restaurant'],
     address: 'Nová Ľubovňa 666, 065 11 Nová Ľubovňa',
+  rating: 4.5,
+  ratingCount: 155,
     weeklyHours: {
       mon: { open: '14:00', close: '21:45' },
       tue: { open: '14:00', close: '21:45' },
@@ -446,6 +486,8 @@ export const venues: Venue[] = [
     name: 'Šípka Klub',
     types: ['pub'],
     address: 'Hviezdoslavova 92, 064 01 Stará Ľubovňa',
+  rating: 4.3,
+  ratingCount: 59,
     weeklyHours: {
       mon: { open: '16:00', close: '23:00' },
       tue: { open: '16:00', close: '23:00' },
@@ -464,6 +506,8 @@ export const venues: Venue[] = [
     name: 'Penzión Koliba Stará Ľubovňa',
     types: ['restaurant'],
     address: 'Popradská 1769/70, 064 01 Stará Ľubovňa',
+  rating: 4.0,
+  ratingCount: 1068,
     restaurantType: 'tradičná',
     weeklyHours: {
       mon: { open: '07:30', close: '18:00' },
@@ -486,6 +530,8 @@ export const venues: Venue[] = [
     name: 'Tenisový Klub Stará Ľubovňa Sport Bar',
     types: ['pub'],
     address: 'Továrenská 1342/30, 064 01 Stará Ľubovňa',
+  rating: 4.6,
+  ratingCount: 54,
     weeklyHours: {
       mon: { open: '11:00', close: '22:00' },
       tue: { open: '11:00', close: '22:00' },

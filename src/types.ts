@@ -20,6 +20,10 @@ export interface Venue {
   types: VenueCategory[];
   address: string;
   reviews?: ReviewRating;
+  /** Average Google (or other source) rating 0-5 */
+  rating?: number;
+  /** Total number of ratings */
+  ratingCount?: number;
   weeklyHours: WeeklyHours; // precise weekly schedule
   weeklyKitchenHours?: WeeklyHours; // optional kitchen (food service) schedule
   website?: string;

@@ -1,6 +1,6 @@
 import React from 'react';
 import { VenueWithStatus, WeeklyHours, DayKey } from '../types';
-import { FaFacebook, FaInstagram, FaGlobe, FaTiktok } from 'react-icons/fa6';
+import { FaFacebook, FaInstagram, FaGlobe, FaTiktok, FaStar, FaRegStar, FaStarHalf } from 'react-icons/fa6';
 
 interface Props {
   venue: VenueWithStatus;
@@ -44,6 +44,15 @@ export const VenueDetailModal: React.FC<Props> = ({ venue, onClose }) => {
             </div>
           <div className="flex flex-col gap-2">
             <h3 className="text-2xl font-semibold leading-tight">{venue.name}</h3>
+            {venue.rating && (
+              <div className="flex items-center gap-2 text-xs" aria-label={`Hodnotenie ${venue.rating} z 5 na základe ${venue.ratingCount} hodnotení`}>
+                <span className="flex gap-0.5">
+                  {[1,2,3,4,5].map(i => venue.rating && venue.rating >= i ? <FaStar key={i} className="text-yellow-400" /> : venue.rating && venue.rating >= i - 0.5 ? <FaStarHalf key={i} className="text-yellow-400" /> : <FaRegStar key={i} className="text-yellow-600/30" />)}
+                </span>
+                <span className="font-medium tabular-nums">{venue.rating.toFixed(1)}</span>
+                {venue.ratingCount != null && <span className="text-neutral-500">({venue.ratingCount})</span>}
+              </div>
+            )}
             {venue.restaurantType && (
               <p className="text-[11px] text-neutral-400">Typ kuchyne: {venue.restaurantType === 'normal' ? 'klasická' : venue.restaurantType}</p>
             )}

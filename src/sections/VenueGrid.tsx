@@ -32,7 +32,14 @@ export const VenueGrid: React.FC = () => {
       const af = favourites.includes(a.id) ? 1 : 0;
       const bf = favourites.includes(b.id) ? 1 : 0;
       if (af !== bf) return bf - af; // favourites first
-      return a.name.localeCompare(b.name, 'sk');
+  // Sort by rating count desc then rating desc (if available), fallback to name
+  const aRC = a.ratingCount ?? -1;
+  const bRC = b.ratingCount ?? -1;
+  if (aRC !== bRC) return bRC - aRC;
+  const aR = a.rating ?? -1;
+  const bR = b.rating ?? -1;
+  if (aR !== bR) return bR - aR;
+  return a.name.localeCompare(b.name, 'sk');
     });
   }, [filtered, favourites]);
 
