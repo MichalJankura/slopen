@@ -603,4 +603,24 @@ export const venues: Venue[] = [
   image: 'https://lh5.googleusercontent.com/proxy/6F1fZKW6vuGWux3yfs2ZW9LnF6f7GrrREmPooLnVknoG-T_sQidcyDtLtg_0It8czvx5W29YRNPHte5UvI5MFQOQ'
 
 },
+{
+    id: 'pekarova-zena',
+  name: 'Pekárová žena',
+  types: ['bakery','cafe'],
+  address: 'Námestie sv. Mikuláša 16, 064 01 Stará Ľubovňa',
+  weeklyHours: {
+    mon: { open: '07:00', close: '17:00' },
+    tue: { open: '07:00', close: '17:00' },
+    wed: { open: '07:00', close: '17:00' },
+    thu: { open: '07:00', close: '17:00' },
+    fri: { open: '07:00', close: '17:00' },
+    sat: { open: '07:00', close: '11:00' },
+    sun: null
+
+  },
+  image: 'https://www.pekarovazena.sk/wp-content/uploads/2023/10/logo.svg#208',
+  website: 'https://www.pekarovazena.sk/',
+  instagram: 'https://www.instagram.com/pekarovazena/',
+  facebook: 'https://www.facebook.com/pekarovazena',
+},
 ];
