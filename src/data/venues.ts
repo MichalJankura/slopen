@@ -292,6 +292,7 @@ export const venues: Venue[] = [
     name: 'SOŠKA - coffee-market-beauty',
     types: ['cafe'],
     address: 'Námestie svätého Mikuláša 24/24, 064 01 Stará Ľubovňa',
+    menu: '/menus/soska_menu.pdf',
   rating: 4.9,
   ratingCount: 61,
     weeklyHours: {
@@ -603,6 +604,7 @@ export const venues: Venue[] = [
   image: 'https://lh5.googleusercontent.com/proxy/6F1fZKW6vuGWux3yfs2ZW9LnF6f7GrrREmPooLnVknoG-T_sQidcyDtLtg_0It8czvx5W29YRNPHte5UvI5MFQOQ'
 
 },
+// Pekárová žena
 {
     id: 'pekarova-zena',
   name: 'Pekárová žena',
