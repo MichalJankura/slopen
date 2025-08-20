@@ -405,8 +405,8 @@ export const venues: Venue[] = [
     types: ['bakery'],
     address: 'Námestie generála Štefánika 3, 064 01 Stará Ľubovňa',
   // rating intentionally omitted (shared brand)
-    rating: 5.0,
-    ratingCount: 10,
+    rating: 4.5,
+    ratingCount: 168,
     weeklyHours: {
       mon: { open: '07:00', close: '17:30' },
       tue: { open: '07:00', close: '17:30' },
@@ -612,6 +612,8 @@ export const venues: Venue[] = [
   name: 'Pekárová žena',
   types: ['bakery','cafe'],
   address: 'Námestie sv. Mikuláša 16, 064 01 Stará Ľubovňa',
+  rating: 5.0,
+  ratingCount: 10,
   weeklyHours: {
     mon: { open: '07:00', close: '17:00' },
     tue: { open: '07:00', close: '17:00' },
@@ -622,7 +624,7 @@ export const venues: Venue[] = [
     sun: null
 
   },
-  image: 'https://www.pekarovazena.sk/wp-content/uploads/2023/10/logo.svg#208',
+  image: 'https://www.pekarovazena.sk/wp-content/uploads/2025/04/2_20250423_214623_0001.png',
   website: 'https://www.pekarovazena.sk/',
   instagram: 'https://www.instagram.com/pekarovazena/',
   facebook: 'https://www.facebook.com/pekarovazena',
