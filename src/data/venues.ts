@@ -405,6 +405,8 @@ export const venues: Venue[] = [
     types: ['bakery'],
     address: 'Námestie generála Štefánika 3, 064 01 Stará Ľubovňa',
   // rating intentionally omitted (shared brand)
+    rating: 5.0,
+    ratingCount: 10,
     weeklyHours: {
       mon: { open: '07:00', close: '17:30' },
       tue: { open: '07:00', close: '17:30' },
