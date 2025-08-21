@@ -328,7 +328,7 @@ export const venues: Venue[] = [
     website: 'https://www.castledistillery.sk/',
     facebook: 'https://www.facebook.com/castledistillery/',
     instagram: 'https://www.instagram.com/castle_distillery/',
-    image: 'castle_destilery_image.webp',
+    image: 'images/castle_destilery_image.webp',
     menu: 'https://www.castledistillery.sk/assets/public/menu_castle_distillery.pdf'
   },
   // U Jeleňa
