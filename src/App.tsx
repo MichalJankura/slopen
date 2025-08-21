@@ -5,13 +5,23 @@ import { SEO } from './components/SEO';
 import VenueFinder from './components/VenueFinder';
 import { ReviewsExtractor } from './review_extractor/reviews_extractor';
 import { FaInstagram, FaFacebook } from 'react-icons/fa';
+import Alert from './components/Alert';
 
 const App: React.FC = () => {
+  const [showAlert, setShowAlert] = useState(true);
   return (
     <>
       <SEO />
       <Navbar />
-      <main>
+      {showAlert && (
+        <Alert
+          message="POZOR NA NAŠOM INSTAGRAME A FACEBOOKU PREBIEHA SÚŤAŽ!"
+          durationMs={7000}
+          onClose={() => setShowAlert(false)}
+          offsetTopClass="top-14" // navbar height ~56px (14 * 4)
+        />
+      )}
+  <main>
         {/* <VenueFinder /> */}
         <Hero />
         <VenueGrid />
