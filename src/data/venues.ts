@@ -501,7 +501,7 @@ export const venues: Venue[] = [
       sun: { open: '14:00', close: '22:00' }
     },
     facebook: 'https://www.facebook.com/profile.php?id=100063732541524',
-    image: 'https://github.com/MichalJankura/slopen-images/blob/e9ccb8e3bac8cd7106e703bbbe02781905ae2d78/IMG_2254.jpeg'
+    image: 'https://raw.githubusercontent.com/MichalJankura/slopen-images/e9ccb8e3bac8cd7106e703bbbe02781905ae2d78/IMG_2254.jpeg'
   },
   // Penzión Koliba
   {
