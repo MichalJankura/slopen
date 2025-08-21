@@ -501,7 +501,7 @@ export const venues: Venue[] = [
       sun: { open: '14:00', close: '22:00' }
     },
     facebook: 'https://www.facebook.com/profile.php?id=100063732541524',
-    image: 'https://scontent.fksc2-1.fna.fbcdn.net/v/t39.30808-6/487994754_1229577639176643_4344249935378039806_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=cc71e4&_nc_ohc=xxH3uMVn8joQ7kNvwH7lFkT&_nc_oc=AdnFHX61Bqm1eYUtyd_p7v8yS5TdUv26YtY84pGkmjlqCaMGGY0l9HIZT0IVRyd7U28&_nc_zt=23&_nc_ht=scontent.fksc2-1.fna&_nc_gid=Bwq_ayIL3c-nutgkFopWwA&oh=00_AfVRBhDQrLS3RERAaUpBTAQVNS2fpHlF-WApkaRQSoot4g&oe=68A63252'
+    image: 'https://github.com/MichalJankura/slopen-images/blob/e9ccb8e3bac8cd7106e703bbbe02781905ae2d78/IMG_2254.jpeg'
   },
   // Penzión Koliba
   {
