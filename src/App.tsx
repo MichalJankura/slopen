@@ -4,6 +4,7 @@ import { VenueGrid } from './sections/VenueGrid';
 import { SEO } from './components/SEO';
 import VenueFinder from './components/VenueFinder';
 import { ReviewsExtractor } from './review_extractor/reviews_extractor';
+import { FaInstagram, FaFacebook } from 'react-icons/fa';
 
 const App: React.FC = () => {
   return (
@@ -67,6 +68,23 @@ const Navbar: React.FC = () => {
         <a href="#" className="font-black tracking-tight text-xl flex items-center gap-2 select-none">
           <BrandName />
         </a>
+        <div className="flex items-center gap-4 text-lg">
+          {/* Replace '#' with real links when ready */}
+          <a
+            href="https://www.instagram.com/slopen_sl/"
+            aria-label="Instagram"
+            className="text-neutral-400 hover:text-pink-400 transition-colors"
+          >
+            <FaInstagram />
+          </a>
+          <a
+            href="https://www.facebook.com/profile.php?id=61579808035026"
+            aria-label="Facebook"
+            className="text-neutral-400 hover:text-blue-500 transition-colors"
+          >
+            <FaFacebook />
+          </a>
+        </div>
         {/* <div className="flex items-center gap-6 text-sm font-medium">
           <a href="#miesta" className="hover:text-primary transition-colors">Miesta</a>
         </div> */}
@@ -78,8 +96,27 @@ const Navbar: React.FC = () => {
 const Footer: React.FC = () => {
   return (
     <footer className="py-12 border-t border-white/5 bg-black/60 mt-20">
-      <div className="max-w-6xl mx-auto px-4 text-center text-sm text-neutral-500">
-        <p>&copy; {new Date().getFullYear()} SLOPEN. Študentský osobný projekt.</p>
+      <div className="max-w-6xl mx-auto px-4 flex flex-col items-center gap-4">
+        <div className="flex gap-5 text-2xl">
+          {/* Replace '#' with real links when ready */}
+          <a
+            href="https://www.instagram.com/slopen_sl/"
+            aria-label="Instagram"
+            className="text-neutral-400 hover:text-pink-400 transition-colors"
+          >
+            <FaInstagram />
+          </a>
+          <a
+            href="https://www.facebook.com/profile.php?id=61579808035026"
+            aria-label="Facebook"
+            className="text-neutral-400 hover:text-blue-500 transition-colors"
+          >
+            <FaFacebook />
+          </a>
+        </div>
+        <div className="text-center text-sm text-neutral-500">
+          <p>&copy; {new Date().getFullYear()} SLOPEN. Študentský osobný projekt.</p>
+        </div>
       </div>
     </footer>
   );
