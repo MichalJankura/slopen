@@ -225,7 +225,7 @@ export const venues: Venue[] = [
   // Kebabing
   {
     id: 'kebabing',
-    name: 'Kebabing',
+    name: 'Kebabing Stará Ľubovňa',
     types: ['restaurant'],
     address: 'Prešovská, 064 01 Stará Ľubovňa',
   rating: 4.5,
