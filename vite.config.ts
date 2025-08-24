@@ -1,4 +1,5 @@
-import { defineConfig, Plugin } from 'vite';
+import { defineConfig, Plugin, loadEnv } from 'vite';
+import { createHash } from 'crypto';
 import react from '@vitejs/plugin-react';
 
 // Simple dev-only proxy to call Google Places Web Service from the server side (avoids CORS + keeps key off client).
@@ -95,9 +96,30 @@ function googlePlacesProxy(): Plugin {
   };
 }
 
-export default defineConfig({
-  plugins: [react(), googlePlacesProxy()],
-  server: {
+export default defineConfig(({ mode }) => {
+  const env = loadEnv(mode, process.cwd(), '');
+  // Accept SECRET_WORD or VITE_SECRET_WORD (only hash is exposed to client)
+  const secretRaw = (env.SECRET_WORD || env.VITE_SECRET_WORD || '').trim().toLowerCase();
+  const secretHash = secretRaw ? createHash('sha256').update(secretRaw).digest('hex') : '';
+  // FNV-1a 32-bit fallback for insecure contexts without SubtleCrypto
+  const fnv1a = (s: string) => {
+    let h = 0x811c9dc5 >>> 0;
+    for (let i = 0; i < s.length; i++) {
+      h ^= s.charCodeAt(i);
+      // multiply by FNV prime 16777619 (0x01000193) in 32-bit space
+      h = Math.imul(h, 0x01000193) >>> 0;
+    }
+    return h.toString(16).padStart(8, '0');
+  };
+  const secretFNV32 = secretRaw ? fnv1a(secretRaw) : '';
+  return {
+    plugins: [react(), googlePlacesProxy()],
+    define: {
+      // Only the hash is exposed to the client
+      __SECRET_WORD_SHA256__: JSON.stringify(secretHash),
+      __SECRET_WORD_FNV32__: JSON.stringify(secretFNV32),
+    },
+    server: {
     host: '0.0.0.0',
     port: 5176,
     strictPort: true,
@@ -112,4 +134,5 @@ export default defineConfig({
     cssMinify: true,
     sourcemap: false,
   },
+  };
 });

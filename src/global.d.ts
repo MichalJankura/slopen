@@ -44,3 +44,7 @@ declare global {
 interface ImportMeta {
   readonly env: ImportMetaEnv;
 }
+
+// Build-time injected secret hash (defined in vite.config.ts)
+declare const __SECRET_WORD_SHA256__: string;
+declare const __SECRET_WORD_FNV32__: string;

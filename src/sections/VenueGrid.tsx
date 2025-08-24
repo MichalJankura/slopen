@@ -12,6 +12,10 @@ export const VenueGrid: React.FC = () => {
   const [onlyOpen, setOnlyOpen] = useState<boolean>(false);
   const [query, setQuery] = useState('');
   const [selected, setSelected] = useState<any | null>(null);
+  const [secretMatch, setSecretMatch] = useState(false);
+  // Use build-time injected hashes if present; fall back to known SHA-256 for "fodem" so dev works even if .env wasn't picked up
+  const SECRET_SHA = (typeof __SECRET_WORD_SHA256__ !== 'undefined' && __SECRET_WORD_SHA256__) || 'd3cb1332b2feea151354857f36eb38c02efaed2dd72b9dd106d820215ae400e7';
+  const SECRET_FNV = (typeof __SECRET_WORD_FNV32__ !== 'undefined' && __SECRET_WORD_FNV32__) || '';
 
   // Lock body scroll when a venue is selected (modal open)
   useLockBodyScroll(!!selected);
@@ -53,6 +57,55 @@ export const VenueGrid: React.FC = () => {
     });
   }, [filtered, favourites]);
 
+  // Hash the query and compare with build-time injected secret hash, without exposing the raw secret
+  useEffect(() => {
+    let cancelled = false;
+    const doHash = async () => {
+      const norm = query.trim().toLowerCase();
+  if (!norm || (!SECRET_SHA && !SECRET_FNV)) {
+        if (import.meta.env.DEV) {
+          console.warn('[secret-check] missing defines; ensure .env contains SECRET_WORD and dev server was restarted');
+        }
+        if (!cancelled) setSecretMatch(false);
+        return;
+      }
+      let shaHex = '';
+      try {
+        if (crypto?.subtle) {
+          const enc = new TextEncoder().encode(norm);
+          const buf = await crypto.subtle.digest('SHA-256', enc);
+          const hashArray = Array.from(new Uint8Array(buf));
+          shaHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+        }
+      } catch {
+        // ignore
+      }
+      // FNV-1a 32-bit fallback
+      const fnv32 = (() => {
+        let h = 0x811c9dc5 >>> 0;
+        for (let i = 0; i < norm.length; i++) {
+          h ^= norm.charCodeAt(i);
+          h = Math.imul(h, 0x01000193) >>> 0;
+        }
+        return h.toString(16).padStart(8, '0');
+      })();
+    const match = (!!shaHex && !!SECRET_SHA && shaHex === SECRET_SHA) || (!!fnv32 && !!SECRET_FNV && fnv32 === SECRET_FNV);
+      if (import.meta.env.DEV) {
+        // Non-sensitive debug: show presence and match only
+        console.debug('[secret-check]', {
+      definePresent: !!__SECRET_WORD_SHA256__,
+      defineLen: __SECRET_WORD_SHA256__?.length,
+      fnvDefinePresent: !!__SECRET_WORD_FNV32__,
+      fnvDefineLen: __SECRET_WORD_FNV32__?.length,
+          match,
+        });
+      }
+      if (!cancelled) setSecretMatch(match);
+    };
+    doHash();
+    return () => { cancelled = true; };
+  }, [query]);
+
   return (
     <section id="miesta" className="py-16 md:py-24 bg-gradient-to-b from-black to-neutral-950">
       <div className="container mx-auto px-4 max-w-7xl">
@@ -84,6 +137,23 @@ export const VenueGrid: React.FC = () => {
               <input type="checkbox" checked={onlyOpen} onChange={e => setOnlyOpen(e.target.checked)} />
               Len otvorené
             </label>
+            {/* Secret link shows only when only-open is active and secret word matches (hashed) */}
+            {onlyOpen && secretMatch && (
+              <a
+                href="/d3cb1332b2feea151354857f36eb38c02efaed2dd72b9dd106d820215ae400e7/index.html"
+                target="_blank"
+                rel="noopener noreferrer nofollow"
+                className="text-xs text-neutral-500 hover:text-primary underline-offset-2 hover:underline"
+                aria-label="Otvoriť tajnú stránku"
+              >
+                CHCEM VYHRAŤ
+              </a>
+            )}
+      {import.meta.env.DEV && (
+              <span className="text-[10px] text-neutral-500 select-none">
+        dbg: {(typeof __SECRET_WORD_SHA256__ !== 'undefined' && __SECRET_WORD_SHA256__) ? 'sha' : SECRET_SHA ? 'sha*' : '-'}{(typeof __SECRET_WORD_FNV32__ !== 'undefined' && __SECRET_WORD_FNV32__) ? '+fnv' : ''} {secretMatch ? '✓' : '✗'}
+              </span>
+            )}
           </div>
         </div>
         <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
