@@ -91,7 +91,7 @@ export const venues: Venue[] = [
     id: 'pho-dem',
     name: 'PHỞ ĐÊM Stará Ľubovňa',
     types: ['restaurant'],
-    address: 'Letná 1073/6 064 03 Stará Ľubovňa',
+    address: 'Letná 1073/6 064 01 Stará Ľubovňa',
   rating: 4.1,
   ratingCount: 122,
     restaurantType: 'ázijská',
@@ -238,7 +238,7 @@ export const venues: Venue[] = [
       thu: { open: '10:00', close: '22:00' },
       fri: { open: '10:00', close: '02:00' },
       sat: { open: '15:00', close: '02:00' },
-      sun: { open: '15:00', close: '21:00' }
+      sun: null
     },
     image: '/images/kebabing_image.webp',
     facebook: 'https://www.facebook.com/p/Kebabing-100057348824620/?locale=sk_SK',
@@ -259,8 +259,8 @@ export const venues: Venue[] = [
       wed: { open: '11:00', close: '24:00' },
       thu: { open: '11:00', close: '24:00' },
       fri: { open: '11:00', close: '02:00' },
-      sat: { open: '11:00', close: '02:00' },
-      sun: null
+      sat: { open: '12:00', close: '02:00' },
+      sun: { open: '16:00', close: '24:00' }
     },
     image: '/images/damask_image.webp'
   },
