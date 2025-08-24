@@ -629,4 +629,5 @@ export const venues: Venue[] = [
   instagram: 'https://www.instagram.com/pekarovazena/',
   facebook: 'https://www.facebook.com/pekarovazena',
 },
+
 ];
