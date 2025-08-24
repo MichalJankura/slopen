@@ -532,7 +532,7 @@ export const venues: Venue[] = [
     id: 'bururu-pub',
     name: 'Bururu Pub',
     types: ['pub'],
-    address: 'Garbiarska 64/1, Stara lubovna, Slovakia, 06401',
+    address: 'Garbiarska 64/1, Stara lubovna, Slovakia, 064 01',
   rating: 4.5,
   ratingCount: 79,
     restaurantType: 'normal',
