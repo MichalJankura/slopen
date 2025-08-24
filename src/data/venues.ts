@@ -102,7 +102,7 @@ export const venues: Venue[] = [
       thu: { open: '10:00', close: '21:00' },
       fri: { open: '10:00', close: '22:00' },
       sat: { open: '11:00', close: '22:00' },
-      sun: null
+      sun: { open: '11:00', close: '21:00' }
     },
     website: 'https://www.phodem.sk/',
     facebook: 'https://www.facebook.com/p/Ph%E1%BB%91-%C4%91%C3%AAm-61550971261155/?locale=sk_SK',
