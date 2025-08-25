@@ -35,7 +35,7 @@ const App: React.FC = () => {
 
 // BrandName animates the FIRST word only (JEM -> PIJEM -> SLOPEM) while 'LEBO SLOPEN' stays static.
 const BrandName: React.FC = () => {
-  const words = ['JEM', 'PIJEM', 'SLOPEM'];
+  const words = ['ŽIJEM','JEM', 'PIJEM','NAVŠTEVUJEM'];
   const [index, setIndex] = useState(0);
   const [transitioning, setTransitioning] = useState(false);
 
