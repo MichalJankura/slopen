@@ -6,6 +6,7 @@ import VenueFinder from './components/VenueFinder';
 import { ReviewsExtractor } from './review_extractor/reviews_extractor';
 import { FaInstagram, FaFacebook } from 'react-icons/fa';
 import Alert from './components/Alert';
+import Holiday from './components/Holiday';
 
 const App: React.FC = () => {
   const [showAlert, setShowAlert] = useState(true);
@@ -13,6 +14,8 @@ const App: React.FC = () => {
     <>
       <SEO />
       <Navbar />
+  {/* Holiday overlay (shows only on matching dates). Test via ?holidayTest=1 and the bottom-left panel. */}
+  <Holiday />
       {showAlert && (
         <Alert
           message="POZOR NA NAŠOM INSTAGRAME A FACEBOOKU PREBIEHA SÚŤAŽ!"
