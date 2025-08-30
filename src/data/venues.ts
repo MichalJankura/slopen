@@ -629,5 +629,49 @@ export const venues: Venue[] = [
   instagram: 'https://www.instagram.com/pekarovazena/',
   facebook: 'https://www.facebook.com/pekarovazena',
 },
+// Nestville Chocolate
+{
+  id: 'nestville-chocolate',
+  name: 'Nestville Chocolate',
+  types: ['restaurant'],
+  address: 'Hniezdne 512, 065 01 Hniezdne',
+  rating: 4.5,
+  ratingCount: 1141,
+  weeklyHours: {
+    mon: { open: '08:00', close: '21:00' },
+    tue: { open: '08:00', close: '21:00' },
+    wed: { open: '08:00', close: '21:00' },
+    thu: { open: '08:00', close: '21:00' },
+    fri: { open: '08:00', close: '22:00' },
+    sat: { open: '08:00', close: '22:00' },
+    sun: { open: '08:00', close: '22:00' }
+  },
+  image: '/images/nestville_chocolate_image.webp',
+  website: 'https://nestvillechocolate.sk/',
+  instagram: 'https://www.instagram.com/nestville.chocolate/',
+  facebook: 'https://www.facebook.com/nestville.chocolate/',
+},
+// Nestville Taberna
+{
+  id: 'nestville-taberna',
+  name: 'Nestville Taberna',
+  types: ['restaurant'],
+  address: 'Hniezdne 471, 065 01 Hniezdne',
+  rating: 4.5,
+  ratingCount: 1141,
+  weeklyHours: {
+    mon: { open: '11:00', close: '22:00' },
+    tue: { open: '11:00', close: '22:00' },
+    wed: { open: '11:00', close: '22:00' },
+    thu: { open: '11:00', close: '22:00' },
+    fri: { open: '11:00', close: '23:00' },
+    sat: { open: '11:00', close: '23:00' },
+    sun: { open: '11:00', close: '22:00' }
 
+  },
+  image: '/images/nestville_taberna_image.webp',
+  website: 'https://www.nestvilletaberna.sk/',
+  instagram: 'https://www.instagram.com/nestvilletaberna/',
+  facebook: 'https://www.facebook.com/nestvilletaberna/',
+},
 ];
