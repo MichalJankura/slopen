@@ -284,7 +284,8 @@ export const venues: Venue[] = [
     },
     image: '/images/chaluj_image.webp',
     facebook: 'https://www.facebook.com/Chalujburgerbeer/?locale=sk_SK',
-    menu: '/menus/chaluj-burger-beer_menu.pdf'
+    menu: '/menus/chaluj-burger-beer_menu.pdf',
+    instagram: 'https://www.instagram.com/chalujburger/',
   },
   // SOŠKA - coffee-market-beauty
   {
@@ -460,6 +461,7 @@ export const venues: Venue[] = [
     facebook: 'https://www.facebook.com/nasakavas.r.o',
     image: '/images/nasa-kava_image.webp',
     menu: 'https://www.nasakava.shop/kategoria-produktu/zrnkova-kava/',
+    instagram: 'https://www.instagram.com/nasa.kava/'
   },
   // Bistro Štelka
   {
