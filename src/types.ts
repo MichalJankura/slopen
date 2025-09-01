@@ -17,6 +17,7 @@ export interface Venue {
   id: string;
   name: string;
   // type: 'restaurant' | 'pub' | 'club' | 'cafe';
+
   types: VenueCategory[];
   address: string;
   reviews?: ReviewRating;
@@ -24,6 +25,8 @@ export interface Venue {
   rating?: number;
   /** Total number of ratings */
   ratingCount?: number;
+  /** Optional alternate names without diacritics (e.g., "Stara Lubovna" for "Stará Ľubovňa"). Used to improve search. */
+  altNames?: string[];
   weeklyHours: WeeklyHours; // precise weekly schedule
   weeklyKitchenHours?: WeeklyHours; // optional kitchen (food service) schedule
   website?: string;

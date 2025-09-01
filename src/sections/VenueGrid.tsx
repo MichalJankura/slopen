@@ -35,10 +35,22 @@ export const VenueGrid: React.FC = () => {
   }, []);
 
   const filtered = useMemo(() => {
+    const norm = (s: string) => s
+      .toLowerCase()
+      .normalize('NFD')
+      // strip combining diacritical marks
+      .replace(/[\u0300-\u036f]/g, '');
+    const q = norm(query.trim());
     return enriched
       .filter(v => (filter === 'all' ? true : v.types.includes(filter as any)))
       .filter(v => (onlyOpen ? v.isOpen : true))
-      .filter(v => v.name.toLowerCase().includes(query.toLowerCase()));
+      .filter(v => {
+        if (!q) return true;
+        const base = norm(v.name);
+        if (base.includes(q)) return true;
+        const alts: string[] = (v.altNames ?? []).map(norm);
+        return alts.some((a: string) => a.includes(q));
+      });
   }, [filter, onlyOpen, query, enriched]);
 
   const sorted = useMemo(() => {

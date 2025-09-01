@@ -35,6 +35,7 @@ export const venues: Venue[] = [
     name: 'Pizzeria Da Fofo',
     types: ['restaurant'],
     address: 'Levočská 3, 064 01 Stará Ľubovňa',
+    altNames: ['Pizzeria Da Fofo', 'Dafofo',],
   rating: 4.5,
   ratingCount: 168,
     restaurantType: 'normal',
@@ -58,6 +59,7 @@ export const venues: Venue[] = [
     name: 'Reštaurácia Kolkáreň',
     types: ['restaurant'],
     address: 'Námestie svätého Mikuláša 12, 064 01 Stará Ľubovňa',
+    altNames: ['Kolkaren'],
   rating: 4.1,
   ratingCount: 1105,
     restaurantType: 'tradičná',
@@ -92,6 +94,7 @@ export const venues: Venue[] = [
     name: 'PHỞ ĐÊM Stará Ľubovňa',
     types: ['restaurant'],
     address: 'Letná 6, 064 01 Stará Ľubovňa',
+  altNames: ['Pho Dem Stara Lubovna', 'Pho Dem', 'Pho', 'PHỞ ĐÊM','Fodem'],
   rating: 4.1,
   ratingCount: 122,
     restaurantType: 'ázijská',
@@ -117,6 +120,7 @@ export const venues: Venue[] = [
     name: 'ŠRC Kaviareň',
     types: ['cafe'],
     address: 'Okružná, 064 01 Stará Ľubovňa',
+  altNames: ['SRC Kaviaren', 'SRC','SRCKO'],
   rating: 4.3,
   ratingCount: 303,
     weeklyHours: {
@@ -139,6 +143,7 @@ export const venues: Venue[] = [
     name: 'EČKO Bar',
     types: ['pub'],
     address: 'Tehelná 462, 064 01 Stará Ľubovňa',
+    altNames: ['Ecko', 'ECKO'],
   rating: 4.6,
   ratingCount: 92,
     weeklyHours: {
@@ -159,6 +164,7 @@ export const venues: Venue[] = [
     name: 'Piváreň Neptún',
     types: ['pub'],
     address: 'Mierová 1098/62, 064 01 Stará Ľubovňa', // Add complete address if available
+  altNames: ['Pivaren Neptun', 'Neptun'],
   rating: 4.7,
   ratingCount: 172,
     weeklyHours: {
@@ -183,6 +189,7 @@ export const venues: Venue[] = [
     name: 'Reštaurácia Shang Hai',
     types: ['restaurant'],
     address: 'Levočská, 064 01 Stará Ľubovňa, Slovakia',
+  altNames: ['Restauracia Shang Hai', 'Shang Hai', 'Cinska', 'Čínska'],
   rating: 4.3,
   ratingCount: 317,
     restaurantType: 'ázijská',
@@ -203,6 +210,7 @@ export const venues: Venue[] = [
     name: 'Motorest Salaš u Franka',
     types: ['restaurant'],
     address: 'Popradská 682, 064 01 Stará Ľubovňa',
+    altNames: ['Frank', 'Salas u Franka','SALAS'],
   rating: 4.6,
   ratingCount: 6019,
     restaurantType: 'tradičná',
@@ -294,6 +302,7 @@ export const venues: Venue[] = [
     types: ['cafe'],
     address: 'Námestie svätého Mikuláša 24/24, 064 01 Stará Ľubovňa',
     menu: '/menus/soska_menu.pdf',
+    altNames: ['Soska'],
   rating: 4.9,
   ratingCount: 61,
     weeklyHours: {
@@ -338,6 +347,7 @@ export const venues: Venue[] = [
     name: 'U Jeleňa',
     types: ['restaurant', 'pub'],
     address: 'Námestie svätého Mikuláša 22, 064 01 Stará Ľubovňa',
+  altNames: ['U Jelena', 'JELEN'],
   rating: 4.2,
   ratingCount: 204,
     weeklyHours: {
@@ -361,6 +371,7 @@ export const venues: Venue[] = [
     name: 'Reštaurácia Panorama',
     types: ['restaurant'],
     address: 'Popradská 1523/10, 064 01 Stará Ľubovňa',
+  altNames: ['Restauracia Panorama', 'Panorama'],
   rating: 4.3,
   ratingCount: 502,
     restaurantType: 'normal',
@@ -446,6 +457,7 @@ export const venues: Venue[] = [
     name: 'Naša káva',
     types: ['cafe'],
     address: 'Levočská 370/36, 064 01 Stará Ľubovňa',
+  altNames: ['Nasa kava'],
   rating: 5.0,
   ratingCount: 21,
     weeklyHours: {
@@ -469,6 +481,7 @@ export const venues: Venue[] = [
     name: 'Bistro Štelka',
     types: ['restaurant'],
     address: 'Nová Ľubovňa 666, 065 11 Nová Ľubovňa',
+    altNames: ['Stelka', 'Štelka'],
   rating: 4.5,
   ratingCount: 155,
     weeklyHours: {
@@ -491,6 +504,7 @@ export const venues: Venue[] = [
     name: 'Šípka Klub',
     types: ['pub'],
     address: 'Hviezdoslavova 92, 064 01 Stará Ľubovňa',
+  altNames: ['Sipka Klub', 'Sipka'],
   rating: 4.3,
   ratingCount: 59,
     weeklyHours: {
@@ -511,6 +525,7 @@ export const venues: Venue[] = [
     name: 'Penzión Koliba Stará Ľubovňa',
     types: ['restaurant'],
     address: 'Popradská 1769/70, 064 01 Stará Ľubovňa',
+  altNames: ['Penzion Koliba Stara Lubovna', 'Koliba'],
   rating: 4.0,
   ratingCount: 1068,
     restaurantType: 'tradičná',
@@ -557,6 +572,7 @@ export const venues: Venue[] = [
     name: 'Tenisový Klub Stará Ľubovňa Sport Bar',
     types: ['pub'],
     address: 'Továrenská 1342/30, 064 01 Stará Ľubovňa',
+  altNames: ['Tenisovy Klub Stara Lubovna Sport Bar', 'Tenisovy Klub'],
   rating: 4.6,
   ratingCount: 54,
     weeklyHours: {
@@ -614,6 +630,7 @@ export const venues: Venue[] = [
   name: 'Pekárová žena',
   types: ['bakery','cafe'],
   address: 'Námestie sv. Mikuláša 16, 064 01 Stará Ľubovňa',
+  altNames: ['Pekarova zena'],
   rating: 5.0,
   ratingCount: 10,
   weeklyHours: {
