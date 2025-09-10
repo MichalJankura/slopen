@@ -16,14 +16,14 @@ const App: React.FC = () => {
       <Navbar />
   {/* Holiday overlay (shows only on matching dates). Test via ?holidayTest=1 and the bottom-left panel. */}
   <Holiday />
-      {showAlert && (
+      {/* {showAlert && (
         <Alert
           message="POZOR NA NAŠOM INSTAGRAME A FACEBOOKU PREBIEHA SÚŤAŽ!"
           durationMs={7000}
           onClose={() => setShowAlert(false)}
           offsetTopClass="top-14" // navbar height ~56px (14 * 4)
         />
-      )}
+      )} */}
   <main>
         {/* <VenueFinder /> */}
         <Hero />
