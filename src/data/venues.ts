@@ -693,4 +693,26 @@ export const venues: Venue[] = [
   instagram: 'https://www.instagram.com/nestvilletaberna/',
   facebook: 'https://www.facebook.com/nestvilletaberna/',
 },
+// Unico Cafe
+{
+  id: 'unico-cafe',
+  name: 'Unico Café',
+  types: ['cafe'],
+  address: 'Levočská, 064 01 Stará Ľubovňa',
+  rating: 4.6,
+  ratingCount: 138,
+  weeklyHours: {
+    mon: { open: '08:00', close: '18:00' },
+    tue: { open: '08:00', close: '18:00' },
+    wed: { open: '08:00', close: '18:00' },
+    thu: { open: '08:00', close: '18:00' },
+    fri: { open: '08:00', close: '18:00' },
+    sat: { open: '08:00', close: '18:00' },
+    sun: null
+
+  },
+  image: '/images/unicocafe_image.webp',
+  instagram: 'https://www.instagram.com/unicocaffe_stara_lubovna/',
+  facebook: 'https://www.facebook.com/p/UNICO-caff%C3%A9-100063631719314/?locale=sk_SK',
+}
 ];
