@@ -466,8 +466,8 @@ export const venues: Venue[] = [
       wed: { open: '08:00', close: '18:00' },
       thu: { open: '08:00', close: '18:00' },
       fri: { open: '08:00', close: '18:00' },
-      sat: { open: '12:00', close: '17:00' },
-      sun: { open: '12:00', close: '17:00' }
+      sat: null,
+      sun: null
     },
     website: 'http://www.nasakava.shop/',
     facebook: 'https://www.facebook.com/nasakavas.r.o',
