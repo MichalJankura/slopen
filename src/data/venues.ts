@@ -327,13 +327,13 @@ export const venues: Venue[] = [
   rating: 4.3,
   ratingCount: 154,
     weeklyHours: {
-      mon: { open: '10:00', close: '20:00' },
+      mon: null,
       tue: { open: '10:00', close: '20:00' },
       wed: { open: '10:00', close: '20:00' },
       thu: { open: '10:00', close: '20:00' },
       fri: { open: '10:00', close: '20:00' },
-      sat: { open: '10:00', close: '21:00' },
-      sun: { open: '10:00', close: '21:00' }
+      sat: { open: '10:00', close: '20:00' },
+      sun: { open: '10:00', close: '20:00' }
     },
     website: 'https://www.castledistillery.sk/',
     facebook: 'https://www.facebook.com/castledistillery/',
