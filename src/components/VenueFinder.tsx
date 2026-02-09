@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { venues } from '../data/venues';
+import { useVenues } from '../hooks/useVenues';
 import { Venue, RestaurantType } from '../types';
 
 const sliderStyles = `
@@ -34,6 +34,7 @@ const sliderStyles = `
 `;
 
 const VenueFinder: React.FC = () => {
+    const { venues, loading, error } = useVenues();
     const [step, setStep] = useState(1);
     const [selectedType, setSelectedType] = useState('');
     const [selectedSubType, setSelectedSubType] = useState('');
@@ -260,7 +261,7 @@ const VenueFinder: React.FC = () => {
                             filteredVenues.map(venue => (
                                 <div key={venue.id} style={{ border: '1px solid #ccc', padding: '15px', marginBottom: '15px', borderRadius: '8px' }}>
                                     <h2>{venue.name}</h2>
-                                    <p><strong>Typ:</strong> {venue.types.join(', ')}</p>
+                                    <p><strong>Typ:</strong> {venue.types ? venue.types.join(', ') : 'N/A'}</p>
                                     <p><strong>Adresa:</strong> {venue.address}</p>
                                     <p><strong>Hodnotenie:</strong> {venue.reviews || 'N/A'}</p>
                                     {venue.website && <p><a href={venue.website} target="_blank" rel="noopener noreferrer">Web</a></p>}

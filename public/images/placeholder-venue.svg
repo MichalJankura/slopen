@@ -1,0 +1,7 @@
+<svg width="400" height="300" viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="400" height="300" fill="#1f1f23"/>
+  <rect x="50" y="50" width="300" height="200" rx="8" fill="#2a2a2e" stroke="#3a3a3e" stroke-width="2"/>
+  <circle cx="120" cy="120" r="20" fill="#4a4a4e"/>
+  <path d="M80 180 L140 140 L180 160 L220 130 L320 180" stroke="#6a6a6e" stroke-width="3" fill="none"/>
+  <text x="200" y="220" text-anchor="middle" fill="#6a6a6e" font-family="Arial, sans-serif" font-size="14">Obrázok nedostupný</text>
+</svg>

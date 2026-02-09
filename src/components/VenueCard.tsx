@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Venue, VenueCategory } from '../types';
 import { FaHeart, FaRegHeart, FaInstagram, FaFacebook, FaGlobe, FaTiktok, FaStar, FaRegStar, FaStarHalf } from 'react-icons/fa6';
+import { getLocalImagePath } from '../utils/images';
 
 interface Props {
   venue: Venue;
@@ -22,6 +23,11 @@ const typeLabel: Record<VenueCategory, string> = {
 };
 
 export const VenueCard: React.FC<Props> = ({ venue, favourite, onToggleFavourite, isOpen, statusNote, onSelect }) => {
+  const [imageError, setImageError] = useState(false);
+  
+  // Debug log
+  console.log(`VenueCard for ${venue.name}: isOpen=${isOpen}, statusNote=${statusNote}`);
+  
   const renderStars = (rating: number) => {
     const stars = [];
     for (let i = 1; i <= 5; i++) {
@@ -31,6 +37,9 @@ export const VenueCard: React.FC<Props> = ({ venue, favourite, onToggleFavourite
     }
     return stars;
   };
+
+  // Handle image path and fallbacks
+  const imageSrc = imageError ? '/images/placeholder-venue.svg' : getLocalImagePath(venue.image, venue.id);
   return (
     <div
       className="group relative bg-neutral-900 rounded-lg overflow-hidden shadow-card transition-transform duration-300 hover:-translate-y-1 cursor-pointer"
@@ -47,14 +56,20 @@ export const VenueCard: React.FC<Props> = ({ venue, favourite, onToggleFavourite
         {favourite ? <FaHeart className="text-primary" /> : <FaRegHeart />}
       </button>
       <div className="h-40 w-full overflow-hidden">
-        <img loading="lazy" src={venue.image} alt={venue.name} className="h-full w-full object-cover group-hover:scale-105 transition-transform duration-500" />
+        <img 
+          loading="lazy" 
+          src={imageSrc} 
+          alt={venue.name} 
+          className="h-full w-full object-cover group-hover:scale-105 transition-transform duration-500"
+          onError={() => setImageError(true)}
+        />
       </div>
       <div className="p-4 flex flex-col gap-2">
         <div className="flex items-start justify-between gap-2">
           <h3 className="font-semibold text-lg leading-tight line-clamp-2 flex-1">{venue.name}</h3>
           {/* Type badges (supports multiple types) */}
           <div className="flex flex-wrap gap-1 justify-end">
-            {venue.types.map(t => (
+            {(venue.types || []).map(t => (
               <span key={t} className="text-[10px] uppercase tracking-wide bg-primary px-2 py-1 rounded font-bold">
                 {typeLabel[t] || t}
               </span>

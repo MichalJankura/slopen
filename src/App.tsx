@@ -7,7 +7,7 @@ import { ReviewsExtractor } from './review_extractor/reviews_extractor';
 import { FaInstagram, FaFacebook } from 'react-icons/fa';
 import Alert from './components/Alert';
 import Holiday from './components/Holiday';
-
+import ErrorBoundary from './components/ErrorBoundary';
 const App: React.FC = () => {
   const [showAlert, setShowAlert] = useState(true);
   return (
@@ -27,7 +27,9 @@ const App: React.FC = () => {
   <main>
         {/* <VenueFinder /> */}
         <Hero />
-        <VenueGrid />
+        <ErrorBoundary>
+          <VenueGrid />
+        </ErrorBoundary>
         {/* Dev tool: Google reviews extractor */}
         {/* <ReviewsExtractor /> */}
         <Footer />

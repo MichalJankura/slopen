@@ -1,18 +1,23 @@
 import React, { useEffect, useMemo, useState } from 'react';
-import { venues } from '../data/venues';
 import { VenueCard } from '../components/VenueCard';
 import { useLocalFavourites } from '../hooks/useLocalFavourites';
+import { useVenues } from '../hooks/useVenues';
 import { computeStatusForWeekly, attachKitchenStatus } from '../utils/time';
 import VenueDetailModal from '../components/VenueDetailModal';
 import { useLockBodyScroll } from '../hooks/useLockBodyScroll';
 
 export const VenueGrid: React.FC = () => {
+  const { venues, loading, error } = useVenues();
   const { favourites, toggleFavourite, isFavourite } = useLocalFavourites();
   const [filter, setFilter] = useState<string>('all');
   const [onlyOpen, setOnlyOpen] = useState<boolean>(false);
   const [query, setQuery] = useState('');
   const [selected, setSelected] = useState<any | null>(null);
   const [secretMatch, setSecretMatch] = useState(false);
+  
+  // Debug log
+  console.log('VenueGrid Debug:', { venues, loading, error, venuesCount: venues.length });
+  
   // [DISABLED - hidden link trigger]
   // const SECRET_SHA = (typeof __SECRET_WORD_SHA256__ !== 'undefined' && __SECRET_WORD_SHA256__) || 'd3cb1332b2feea151354857f36eb38c02efaed2dd72b9dd106d820215ae400e7';
   // const SECRET_FNV = (typeof __SECRET_WORD_FNV32__ !== 'undefined' && __SECRET_WORD_FNV32__) || '';
@@ -27,12 +32,18 @@ export const VenueGrid: React.FC = () => {
   }, [selected]);
 
   const enriched = useMemo(() => {
-    return venues.map(v => {
+    console.log('VenueGrid enriched: Processing venues:', venues.length);
+    const result = venues.map((v, index) => {
+      console.log(`Processing venue ${index}:`, v.name, 'weeklyHours:', v.weeklyHours);
       const status = computeStatusForWeekly(v.weeklyHours || {});
+      console.log(`Status for ${v.name}:`, status);
       const withKitchen = attachKitchenStatus(status, v.weeklyKitchenHours);
+      console.log(`Final status for ${v.name}:`, withKitchen);
       return { ...v, ...withKitchen };
     });
-  }, []);
+    console.log('Enriched venues result:', result);
+    return result;
+  }, [venues]);
 
   const filtered = useMemo(() => {
     const norm = (s: string) => s
@@ -42,13 +53,13 @@ export const VenueGrid: React.FC = () => {
       .replace(/[\u0300-\u036f]/g, '');
     const q = norm(query.trim());
     return enriched
-      .filter(v => (filter === 'all' ? true : v.types.includes(filter as any)))
+      .filter(v => (filter === 'all' ? true : (v.types || []).includes(filter as any)))
       .filter(v => (onlyOpen ? v.isOpen : true))
       .filter(v => {
         if (!q) return true;
         const base = norm(v.name);
         if (base.includes(q)) return true;
-        const alts: string[] = (v.altNames ?? []).map(norm);
+        const alts: string[] = (v.altNames || []).map(norm);
         return alts.some((a: string) => a.includes(q));
       });
   }, [filter, onlyOpen, query, enriched]);
@@ -107,11 +118,12 @@ export const VenueGrid: React.FC = () => {
             <h2 className="text-3xl md:text-4xl font-bold tracking-tight">Podniky v meste</h2>
             <p className="text-neutral-400 mt-2 text-sm max-w-xl">Prehľad miestnych prevádzok. Pridaj si obľúbené a zobraz ich hore. Nepotrebujeme tvoje prihlásenie.</p>
           </div>
-          <div className="flex flex-wrap items-center gap-3">
-            <input
-              type="text"
-              placeholder="Hľadať..."
-              value={query}
+          {!loading && !error && (
+            <div className="flex flex-wrap items-center gap-3">
+              <input
+                type="text"
+                placeholder="Hľadať..."
+                value={query}
               onChange={e => setQuery(e.target.value)}
               className="bg-neutral-800/80 rounded px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary placeholder-neutral-500"
             />
@@ -134,8 +146,24 @@ export const VenueGrid: React.FC = () => {
             {false && (
               <a href="#" className="text-xs text-neutral-500">CHCEM VYHRAŤ</a>
             )}
-          </div>
+            </div>
+          )}
         </div>
+
+        {loading && (
+          <div className="flex items-center justify-center py-12">
+            <div className="text-neutral-400">Načítavam podniky...</div>
+          </div>
+        )}
+
+        {error && (
+          <div className="bg-red-950/50 border border-red-500/50 rounded-lg p-4 text-red-200 mb-6">
+            <p className="font-semibold">Chyba pri načítaní:</p>
+            <p className="text-sm">{error}</p>
+          </div>
+        )}
+
+        {!loading && !error && (
         <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
           {sorted.map(v => {
             let statusNote: string | undefined;
@@ -154,6 +182,7 @@ export const VenueGrid: React.FC = () => {
             return <VenueCard key={v.id} venue={v} favourite={isFavourite(v.id)} onToggleFavourite={toggleFavourite} isOpen={v.isOpen} statusNote={statusNote} onSelect={setSelected} />;
           })}
         </div>
+        )}
       </div>
       {selected && <VenueDetailModal venue={selected} onClose={() => setSelected(null)} />}
     </section>

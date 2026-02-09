@@ -18,7 +18,7 @@ export interface Venue {
   name: string;
   // type: 'restaurant' | 'pub' | 'club' | 'cafe';
 
-  types: VenueCategory[];
+  types: VenueCategory[] | null;
   address: string;
   reviews?: ReviewRating;
   /** Average Google (or other source) rating 0-5 */
@@ -26,9 +26,9 @@ export interface Venue {
   /** Total number of ratings */
   ratingCount?: number;
   /** Optional alternate names without diacritics (e.g., "Stara Lubovna" for "Stará Ľubovňa"). Used to improve search. */
-  altNames?: string[];
-  weeklyHours: WeeklyHours; // precise weekly schedule
-  weeklyKitchenHours?: WeeklyHours; // optional kitchen (food service) schedule
+  altNames?: string[] | null;
+  weeklyHours: WeeklyHours | null; // precise weekly schedule
+  weeklyKitchenHours?: WeeklyHours | null; // optional kitchen (food service) schedule
   website?: string;
   facebook?: string;
   instagram?: string;

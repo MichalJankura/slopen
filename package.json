@@ -10,6 +10,7 @@
     "lint": "echo 'Add ESLint later'"
   },
   "dependencies": {
+    "@supabase/supabase-js": "^2.95.3",
     "prompt-sync": "^4.2.0",
     "qrcode.react": "^4.2.0",
     "react": "^18.3.1",
